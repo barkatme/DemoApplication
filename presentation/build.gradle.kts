@@ -6,6 +6,10 @@ plugins {
 
 android {
     compileSdkVersion(AndroidSdk.compile)
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId = null
         minSdkVersion(AndroidSdk.min)
@@ -17,11 +21,13 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
-
 
 dependencies {
 
@@ -29,13 +35,14 @@ dependencies {
     implementation(project(path = ":domain"))
 
     implementation(Libraries.kotlinStdLib)
-    implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
-    implementation(Libraries.constraintLayout)
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
 
-    testImplementation (TestLibraries.junit4)
-    androidTestImplementation (TestLibraries.testRunner)
-    androidTestImplementation (TestLibraries.espresso)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.coroutines)
+    implementation(Libraries.coroutinesAndroid)
+
+    testImplementation(TestLibraries.junit4)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
 }
