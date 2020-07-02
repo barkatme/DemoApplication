@@ -1,2 +1,2 @@
-include ':data', ':presentation'
+include ':data', ':domain', ':presentation'
 rootProject.name = "GitHub"
