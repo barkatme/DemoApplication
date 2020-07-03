@@ -1,4 +1,4 @@
-package com.barkatme.github.domain
+package com.barkatme.demo.domain
 
 import com.barkatme.data.User
 

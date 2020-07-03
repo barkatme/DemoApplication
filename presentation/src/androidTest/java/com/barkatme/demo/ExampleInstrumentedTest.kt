@@ -1,4 +1,4 @@
-package com.barkatme.github
+package com.barkatme.demo
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

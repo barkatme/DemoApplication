@@ -1,4 +1,4 @@
-package com.barkatme.github
+package com.barkatme.demo
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

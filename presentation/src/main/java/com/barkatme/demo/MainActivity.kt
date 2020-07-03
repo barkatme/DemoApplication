@@ -1,4 +1,4 @@
-package com.barkatme.github
+package com.barkatme.demo
 
 import android.os.Bundle
 import android.widget.Toast
