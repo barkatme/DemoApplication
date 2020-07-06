@@ -12,8 +12,8 @@ data class Todo(val userId: Int, val id: Int, val title: String, val completed: 
 
 val todoSerializer = Todo.serializer()
 
-class NetRepository {
-    suspend fun test() = withContext(Dispatchers.IO) {
+class NetRepository : Repository {
+    override suspend fun test() = withContext(Dispatchers.IO) {
         "https://jsonplaceholder.typicode.com/todos/1".httpGet()
             .await(kotlinxDeserializerOf(todoSerializer))
     }
