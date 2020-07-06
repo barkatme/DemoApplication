@@ -1,3 +1,5 @@
+import Libraries.koinAndroid
+
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
@@ -36,6 +38,11 @@ dependencies {
 
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.ktxCore)
+
+    implementation(Libraries.androidxViewModel)
+    implementation(Libraries.androidxLiveData)
+
+    koinAndroid()
 
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
