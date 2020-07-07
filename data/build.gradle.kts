@@ -13,6 +13,6 @@ dependencies {
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.coroutines)
     implementation(Libraries.kotlinxSerialization)
-    implementation(Libraries.koin_kotlin)
+    implementation(Libraries.koinKotlin)
     fuel()
 }

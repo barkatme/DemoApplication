@@ -10,8 +10,10 @@ object Libraries {
         const val coroutines = "1.3.7"
         const val fuel = "2.2.3"
         const val serialization = "0.20.0"
-        const val lifecycle_version = "2.2.0"
+        const val lifecycle = "2.2.0"
         const val koin = "2.1.5"
+        const val recyclerview = "1.1.0"
+        const val recyclerViewSelection = "1.1.0-rc01"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -27,24 +29,32 @@ object Libraries {
             Versions.serialization
 
     // Koin for Kotlin
-    const val koin_kotlin = "org.koin:koin-core:${Versions.koin}"
-    // Koin for Android
-    private const val koin_android =  "org.koin:koin-android:${Versions.koin}"
-    // or Koin for Lifecycle scoping
-    private const val koin_androidx =  "org.koin:koin-androidx-scope:${Versions.koin}"
-    // or Koin for Android Architecture ViewModel
-    private const val koin_viewmodel =  "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-    // or Koin for Android Fragment Factory (unstable version)
-    private const val koin_fragment =  "org.koin:koin-androidx-fragment:${Versions.koin}"
+    const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
 
-    const val androidxLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
-    const val androidxViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+    // Koin for Android
+    private const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
+
+    // or Koin for Lifecycle scoping
+    private const val koinAndroidx = "org.koin:koin-androidx-scope:${Versions.koin}"
+
+    // or Koin for Android Architecture ViewModel
+    private const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+
+    // or Koin for Android Fragment Factory (unstable version)
+    private const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
+
+    const val androidxLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    const val androidxViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:" +
+            Versions.recyclerViewSelection
 
     fun DependencyHandler.koinAndroid() {
-        implementation(koin_android)
-        implementation(koin_androidx)
-        implementation(koin_viewmodel)
-        implementation(koin_fragment)
+        implementation(koinAndroid)
+        implementation(koinAndroidx)
+        implementation(koinViewModel)
+        implementation(koinFragment)
     }
 
     fun DependencyHandler.fuel() {
