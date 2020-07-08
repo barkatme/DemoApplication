@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 //override allow other modules to make other providers for definitions in that module
 //it can also be applied for definitions
-val data_module = module(override = true) {
+val dataModule = module(override = true) {
     // declare single instance for NetRepository class
     // Will match type NetRepository only if without "bind"
     // bind make it matches 2 types: NetRepository & Repository
@@ -18,8 +18,8 @@ val data_module = module(override = true) {
     //or this way -> single { NetRepository() as Repository } (not preferred, as koin docs said)
 }
 
-val start_data_koin = {
+val startDataKoin = {
     startKoin {
-        modules(data_module)
+        modules(dataModule)
     }
 }

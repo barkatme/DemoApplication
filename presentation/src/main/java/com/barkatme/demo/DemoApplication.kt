@@ -6,6 +6,6 @@ class DemoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        startPresentationModule(this@DemoApplication)
+        startPresentationKoin(this@DemoApplication)
     }
 }

@@ -6,8 +6,7 @@ import com.barkatme.data.model.placeholder.Todo
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import kotlinx.serialization.builtins.list
 
 class NetRepository : Repository {
@@ -21,9 +20,14 @@ class NetRepository : Repository {
             .await(kotlinxDeserializerOf(Post.serializer.list))
     }
 
-    override suspend fun getComments(): List<Comment> = withContext(Dispatchers.IO) {
+    override suspend fun getComments(): List<Comment> =
         "https://jsonplaceholder.typicode.com/comments".httpGet()
             .await(kotlinxDeserializerOf(Comment.serializer.list))
-    }
+
+    override fun getCommentsAsync(): Deferred<List<Comment>> =
+        CoroutineScope(Dispatchers.IO).async {
+            "https://jsonplaceholder.typicode.com/comments".httpGet()
+                .await(kotlinxDeserializerOf(Comment.serializer.list))
+        }
 
 }

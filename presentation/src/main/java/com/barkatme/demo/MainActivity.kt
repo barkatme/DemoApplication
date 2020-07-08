@@ -1,9 +1,9 @@
 package com.barkatme.demo
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.barkatme.data.NetRepository
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -14,12 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val netRepository: NetRepository by inject()
+
+        val commentsAsync = netRepository.getCommentsAsync()
+
         MainScope().launch {
-            Toast.makeText(
-                baseContext,
-                netRepository.getComments()[0].toString(),
-                Toast.LENGTH_LONG
-            ).show()
+            logTextView.text = "loading first comment..."
+            logTextView.text = commentsAsync.await()[0].toString()
         }
     }
 }
