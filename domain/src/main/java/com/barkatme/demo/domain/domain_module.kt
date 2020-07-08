@@ -5,7 +5,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 val domain_module = module {
-    factory { UserCreator() }
+    
 }
 
 val start_domain_koin = {

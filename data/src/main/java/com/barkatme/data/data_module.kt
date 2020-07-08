@@ -1,7 +1,6 @@
 package com.barkatme.data
 
 import org.koin.core.context.startKoin
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
@@ -17,15 +16,6 @@ val data_module = module(override = true) {
     // Will match type Repository only
     single<Repository> { NetRepository() }
     //or this way -> single { NetRepository() as Repository } (not preferred, as koin docs said)
-
-    // declare factory instance for User class
-    factory { User() }
-    //you can use injection parameters: parameters that will be injected and used by your definition
-    factory(named("parametrized")) { (name: String) -> User(name) }
-}
-
-fun testDataModule() {
-
 }
 
 val start_data_koin = {

@@ -29,6 +29,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -46,6 +49,9 @@ dependencies {
 
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
+    implementation(Libraries.recyclerView)
+    implementation(Libraries.recyclerViewSelection)
+
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)
 
