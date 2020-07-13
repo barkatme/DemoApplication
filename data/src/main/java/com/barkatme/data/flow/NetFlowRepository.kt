@@ -15,6 +15,7 @@ class NetFlowRepository : FlowRepository {
 
     override suspend fun todo(n: Int) = withContext(Dispatchers.IO) {
             "https://jsonplaceholder.typicode.com/todos/$n".httpGet()
+                .timeout(5000)
                 .await(kotlinxDeserializerOf(Todo.serializer))
     }
 

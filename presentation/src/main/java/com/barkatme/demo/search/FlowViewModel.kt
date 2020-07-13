@@ -12,13 +12,12 @@ import kotlin.coroutines.CoroutineContext
 class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
     CoroutineScope {
 
-    companion object{
+    companion object {
         const val REQUEST_MOCK_DELAY: Long = 2000
         const val INPUT_REQUEST_TIMEOUT: Long = 1000
     }
 
     val output = MutableLiveData<String>()
-
     val todoFrom = MutableLiveData<String>()
     val todoTo = MutableLiveData<String>()
 
@@ -31,11 +30,13 @@ class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewMo
             var result = ""
             val from = todoFrom.value?.toInt() ?: 1
             val to = todoTo.value?.toInt() ?: 1
-                testFlowInteractor.getTodo(from, to)
-                    .flowOn(Dispatchers.IO)
-                    .collect {
-                        result += it.title + "\n"
-                    }
+            testFlowInteractor.getTodo(from, to)
+                .onStart { output.value = "loading..." }
+                .catch { result = it.message.toString() }
+                .flowOn(Dispatchers.Main)
+                .collect {
+                    result += it.title + "\n"
+                }
             output.value = result
         }
     }
