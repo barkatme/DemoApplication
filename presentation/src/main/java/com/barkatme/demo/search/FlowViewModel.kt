@@ -23,7 +23,10 @@ class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewMo
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
-    private val job = Job()
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        output.value += "\n" + throwable.message
+    }
+    private val job = Job() + exceptionHandler
 
     fun getTodo() {
         launch {
@@ -32,6 +35,8 @@ class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewMo
             val to = todoTo.value?.toInt() ?: 1
             testFlowInteractor.getTodo(from, to)
                 .onStart { output.value = "loading..." }
+                    //if we don't use catch, the exceptionHandler will get this throwable
+                    //but this flow will stop
                 .catch { result = it.message.toString() }
                 .flowOn(Dispatchers.Main)
                 .collect {
