@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Demo</string>
+    <string name="from">from</string>
+    <string name="to">to</string>
+    <string name="get_todos">get todos</string>
+    <string name="flow">Flow</string>
+    <string name="channels">Channels</string>
 </resources>

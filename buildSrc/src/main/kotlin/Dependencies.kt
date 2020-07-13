@@ -6,7 +6,8 @@ object Libraries {
     private object Versions {
         const val jetpack = "1.1.0"
         const val constraintLayout = "1.1.3"
-        const val ktx = "1.1.0-alpha05"
+        const val ktx = "1.3.0"
+        const val ktxFragment = "1.2.5"
         const val coroutines = "1.3.7"
         const val fuel = "2.2.3"
         const val serialization = "0.20.0"
@@ -21,6 +22,7 @@ object Libraries {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:" +
             Versions.constraintLayout
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.ktxFragment}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
             Versions.coroutines
@@ -30,16 +32,12 @@ object Libraries {
 
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
-
     // Koin for Android
     private const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-
     // or Koin for Lifecycle scoping
     private const val koinAndroidx = "org.koin:koin-androidx-scope:${Versions.koin}"
-
     // or Koin for Android Architecture ViewModel
     private const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-
     // or Koin for Android Fragment Factory (unstable version)
     private const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
 

@@ -1,5 +1,7 @@
 package com.barkatme.data
 
+import com.barkatme.data.flow.FlowRepository
+import com.barkatme.data.flow.NetFlowRepository
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -16,6 +18,8 @@ val dataModule = module(override = true) {
     // Will match type Repository only
     single<Repository> { NetRepository() }
     //or this way -> single { NetRepository() as Repository } (not preferred, as koin docs said)
+
+    single<FlowRepository> { NetFlowRepository() }
 }
 
 val startDataKoin = {

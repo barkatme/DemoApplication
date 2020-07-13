@@ -29,5 +29,4 @@ class NetRepository : Repository {
             "https://jsonplaceholder.typicode.com/comments".httpGet()
                 .await(kotlinxDeserializerOf(Comment.serializer.list))
         }
-
 }

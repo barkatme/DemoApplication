@@ -1,3 +1,4 @@
+import Libraries.fuel
 import Libraries.koinAndroid
 
 plugins {
@@ -11,6 +12,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     defaultConfig {
         applicationId = null
@@ -41,11 +45,16 @@ dependencies {
 
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.ktxCore)
+    implementation(Libraries.fragmentKtx)
 
     implementation(Libraries.androidxViewModel)
     implementation(Libraries.androidxLiveData)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
     koinAndroid()
+    fuel()
 
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
