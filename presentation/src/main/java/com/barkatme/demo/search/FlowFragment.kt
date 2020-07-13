@@ -8,8 +8,8 @@ import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.barkatme.demo.R
-import com.barkatme.demo.databinding.SearchFragmentBinding
-import kotlinx.android.synthetic.main.search_fragment.*
+import com.barkatme.demo.databinding.FlowFragmentBinding
+import kotlinx.android.synthetic.main.flow_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,21 +18,21 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class SearchFragment : Fragment() {
+class FlowFragment : Fragment() {
 
     companion object {
-        val TAG = SearchFragment::class.simpleName
+        val TAG = FlowFragment::class.simpleName
     }
 
-    val viewModel: SearchViewModel by viewModel()
+    private val viewModel: FlowViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<SearchFragmentBinding>(
+        val binding = DataBindingUtil.inflate<FlowFragmentBinding>(
             layoutInflater,
-            R.layout.search_fragment,
+            R.layout.flow_fragment,
             container,
             false
         )

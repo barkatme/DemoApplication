@@ -9,8 +9,13 @@ import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class SearchViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
+class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
     CoroutineScope {
+
+    companion object{
+        const val REQUEST_MOCK_DELAY: Long = 2000
+        const val INPUT_REQUEST_TIMEOUT: Long = 1000
+    }
 
     val output = MutableLiveData<String>()
 
@@ -24,12 +29,12 @@ class SearchViewModel(private val testFlowInteractor: TestFlowInteractor) : View
     fun getTodo() {
         launch {
             var result = ""
-            val from = todoFrom.value?.toInt() ?: 0
-            val to = todoTo.value?.toInt() ?: 0
+            val from = todoFrom.value?.toInt() ?: 1
+            val to = todoTo.value?.toInt() ?: 1
                 testFlowInteractor.getTodo(from, to)
                     .flowOn(Dispatchers.IO)
                     .collect {
-                        result += "\n${it.title}"
+                        result += it.title + "\n"
                     }
             output.value = result
         }
@@ -37,15 +42,14 @@ class SearchViewModel(private val testFlowInteractor: TestFlowInteractor) : View
 
     private fun requestMock(query: String): Flow<String> {
         return flow {
-            delay(2000)
+            delay(REQUEST_MOCK_DELAY)
             emit(query)
         }
     }
 
     fun setSearchFlow(searchStateFlow: StateFlow<String>) {
-        output.value = "test"
         launch {
-            searchStateFlow.debounce(1000)
+            searchStateFlow.debounce(INPUT_REQUEST_TIMEOUT)
                 .filter { query ->
                     if (query.isEmpty()) {
                         output.postValue("")

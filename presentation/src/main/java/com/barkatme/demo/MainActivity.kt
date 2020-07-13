@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.barkatme.demo.search.SearchFragment
+import com.barkatme.demo.search.FlowFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         flow.setOnClickListener {
             supportFragmentManager.commit {
-                replace<SearchFragment>(R.id.frameLayout, null, null)
-                addToBackStack(SearchFragment.TAG)
+                replace<FlowFragment>(R.id.frameLayout, null, null)
+                addToBackStack(FlowFragment.TAG)
             }
         }
     }

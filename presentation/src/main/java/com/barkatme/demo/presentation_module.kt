@@ -3,7 +3,7 @@ package com.barkatme.demo
 import android.app.Application
 import com.barkatme.data.dataModule
 import com.barkatme.demo.domain.domainModule
-import com.barkatme.demo.search.SearchViewModel
+import com.barkatme.demo.search.FlowViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +15,7 @@ import org.koin.dsl.module
 @FlowPreview
 @ExperimentalCoroutinesApi
 val presentationModule = module {
-    viewModel { SearchViewModel(get()) }
+    viewModel { FlowViewModel(get()) }
 }
 
 @ExperimentalCoroutinesApi

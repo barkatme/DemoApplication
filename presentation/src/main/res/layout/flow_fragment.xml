@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.search.SearchViewModel" />
+            type="com.barkatme.demo.search.FlowViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".search.SearchFragment">
+        tools:context=".search.FlowFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/from"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_x"
                 android:layout_weight="4"
                 android:text="@={viewModel.todoFrom}" />
 
@@ -35,14 +35,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/to"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_x"
                 android:layout_weight="4"
                 android:text="@={viewModel.todoTo}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_x"
                 android:layout_weight="4"
                 android:onClick="@{(view)->viewModel.getTodo()}"
                 android:text="@string/get_todos" />
@@ -52,11 +52,7 @@
             android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="@dimen/margin_x"
             app:layout_constraintBottom_toTopOf="@+id/outputTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -65,12 +61,8 @@
         <TextView
             android:id="@+id/outputTextView"
             android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="@dimen/flow_fragment_output_height"
+            android:layout_margin="@dimen/margin_x"
             android:text="@{viewModel.output}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

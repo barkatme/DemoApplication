@@ -19,21 +19,21 @@
             android:id="@+id/flow"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_x"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/flow"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_18" />
 
         <TextView
             android:id="@+id/channels"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_x"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/channels"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_18" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <FrameLayout
