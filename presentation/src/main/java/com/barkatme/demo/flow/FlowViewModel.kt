@@ -1,4 +1,4 @@
-package com.barkatme.demo.search
+package com.barkatme.demo.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

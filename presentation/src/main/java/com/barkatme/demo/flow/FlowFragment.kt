@@ -1,4 +1,4 @@
-package com.barkatme.demo.search
+package com.barkatme.demo.flow
 
 import android.os.Bundle
 import android.view.LayoutInflater
