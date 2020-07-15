@@ -5,4 +5,5 @@
     <string name="get_todos">get todos</string>
     <string name="flow">Flow</string>
     <string name="channels">Channels</string>
+    <string name="start">start</string>
 </resources>

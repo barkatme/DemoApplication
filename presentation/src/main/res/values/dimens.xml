@@ -3,4 +3,5 @@
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="margin_x">8dp</dimen>
     <dimen name="flow_fragment_output_height">250dp</dimen>
+    <dimen name="margin_2x">16dp</dimen>
 </resources>

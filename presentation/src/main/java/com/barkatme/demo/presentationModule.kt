@@ -2,6 +2,7 @@ package com.barkatme.demo
 
 import android.app.Application
 import com.barkatme.data.dataModule
+import com.barkatme.demo.channel.ChannelsViewModel
 import com.barkatme.demo.domain.domainModule
 import com.barkatme.demo.flow.FlowViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
