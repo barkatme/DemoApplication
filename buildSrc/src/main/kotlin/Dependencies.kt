@@ -4,6 +4,7 @@ const val kotlinVersion = "1.3.72"
 
 object Libraries {
     private object Versions {
+        const val navigation = "2.3.0"
         const val jetpack = "1.1.0"
         const val constraintLayout = "1.1.3"
         const val ktx = "1.3.0"
@@ -44,6 +45,8 @@ object Libraries {
     const val androidxLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val androidxViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val androidxLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:" +

@@ -5,6 +5,7 @@ import com.barkatme.data.dataModule
 import com.barkatme.demo.channel.ChannelsViewModel
 import com.barkatme.demo.domain.domainModule
 import com.barkatme.demo.flow.FlowViewModel
+import com.barkatme.demo.menu.MenuViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.koin.androidContext
@@ -18,6 +19,7 @@ import org.koin.dsl.module
 val presentationModule = module {
     viewModel { FlowViewModel(get()) }
     viewModel { ChannelsViewModel() }
+    viewModel { MenuViewModel() }
 }
 
 @ExperimentalCoroutinesApi

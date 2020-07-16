@@ -47,20 +47,22 @@ dependencies {
     implementation(Libraries.ktxCore)
     implementation(Libraries.fragmentKtx)
 
-    implementation(Libraries.androidxViewModel)
-    implementation(Libraries.androidxLiveData)
-    implementation(Libraries.androidxLifecycleExtensions)
+    implementation(Libraries.coroutines)
+    implementation(Libraries.coroutinesAndroid)
 
     koinAndroid()
     fuel()
+
+    implementation(Libraries.androidxViewModel)
+    implementation(Libraries.androidxLiveData)
+    implementation(Libraries.androidxLifecycleExtensions)
+    implementation(Libraries.androidxNavigationFragment)
+    implementation(Libraries.androidxNavigationUi)
 
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.recyclerView)
     implementation(Libraries.recyclerViewSelection)
-
-    implementation(Libraries.coroutines)
-    implementation(Libraries.coroutinesAndroid)
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)
