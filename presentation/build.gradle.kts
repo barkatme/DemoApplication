@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.kotlinKapt)
 }
 
 android {
@@ -63,6 +64,8 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.recyclerView)
     implementation(Libraries.recyclerViewSelection)
+    implementation("android.arch.persistence.room:runtime:1.1.1")
+    kapt("android.arch.persistence.room:compiler:1.1.1")
 
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testRunner)

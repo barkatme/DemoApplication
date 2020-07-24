@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 class MenuViewModel : ViewModel(), CoroutineScope {
 
     val channel = Channel<Int>()
-    
+
     val flowAction = R.id.action_menuFragment_to_flowFragment
     val channelAction = R.id.action_menuFragment_to_channelsFragment
 

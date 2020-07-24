@@ -12,4 +12,5 @@ object BuildPlugins {
     const val serialization = "org.jetbrains.kotlin.plugin.serialization"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
+    const val kotlinKapt = "kotlin-kapt"
 }
