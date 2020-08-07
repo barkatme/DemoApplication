@@ -18,14 +18,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class FlowFragment(private val layout: Int = R.layout.fragment_coroutines_flow) :
+class CoroutinesFlowFragment(private val layout: Int = R.layout.fragment_coroutines_flow) :
     BaseFragment(layout) {
 
     companion object {
-        val TAG = FlowFragment::class.simpleName
+        val TAG = CoroutinesFlowFragment::class.simpleName
     }
 
-    private val viewModel: FlowViewModel by viewModel()
+    private val viewModel: CoroutinesFlowViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -15,14 +15,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ChannelsFragment(private val layout: Int = R.layout.fragment_coroutines_channels) :
+class CoroutinesChannelFragment(private val layout: Int = R.layout.fragment_coroutines_channels) :
     BaseFragment(layout) {
 
     companion object {
-        val TAG = ChannelsFragment::class.simpleName
+        val TAG = CoroutinesChannelFragment::class.simpleName
     }
 
-    private val viewModel: ChannelsViewModel by viewModel()
+    private val viewModel: CoroutinesChannelViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -9,7 +9,7 @@ import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class FlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
+class CoroutinesFlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
     CoroutineScope {
 
     companion object {

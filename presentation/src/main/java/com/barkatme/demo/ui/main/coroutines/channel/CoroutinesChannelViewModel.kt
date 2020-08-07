@@ -7,7 +7,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
-class ChannelsViewModel : ViewModel(), CoroutineScope {
+class CoroutinesChannelViewModel : ViewModel(), CoroutineScope {
 
     companion object {
         const val MAX_LINES = 10

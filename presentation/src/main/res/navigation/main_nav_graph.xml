@@ -10,12 +10,12 @@
         app:startDestination="@id/coroutines">
         <fragment
             android:id="@+id/flowFragment"
-            android:name="com.barkatme.demo.ui.main.coroutines.flow.FlowFragment"
+            android:name="com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowFragment"
             android:label="FlowFragment"
             tools:layout="@layout/fragment_coroutines_flow" />
         <fragment
             android:id="@+id/channelsFragment"
-            android:name="com.barkatme.demo.ui.main.coroutines.channel.ChannelsFragment"
+            android:name="com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelFragment"
             android:label="ChannelsFragment"
             tools:layout="@layout/fragment_coroutines_channels" />
         <fragment
@@ -50,7 +50,16 @@
             android:id="@+id/room"
             android:name="com.barkatme.demo.ui.main.room.menu.RoomMenuFragment"
             android:label="RoomMenuFragment"
-            tools:layout="@layout/fragment_room_menu" />
+            tools:layout="@layout/fragment_room_menu">
+            <action
+                android:id="@+id/action_room_to_roomGiphyFragment"
+                app:destination="@id/roomGiphyFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/roomGiphyFragment"
+            android:name="com.barkatme.demo.ui.main.room.giphy.RoomGiphyFragment"
+            android:label="RoomGiphyFragment"
+            tools:layout="@layout/fragment_room_giphy" />
     </navigation>
 
 </navigation>

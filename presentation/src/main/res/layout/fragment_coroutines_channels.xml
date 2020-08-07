@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.coroutines.channel.ChannelsViewModel" />
+            type="com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.coroutines.channel.ChannelsFragment">
+        tools:context=".ui.main.coroutines.channel.CoroutinesChannelFragment">
 
         <Button
             android:id="@+id/channels_start"

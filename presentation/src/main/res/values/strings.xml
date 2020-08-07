@@ -9,4 +9,5 @@
     <string name="coroutines">Coroutines</string>
     <string name="jetpack">Jetpack</string>
     <string name="room">Room</string>
+    <string name="giphy">Giphy</string>
 </resources>
