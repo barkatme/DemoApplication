@@ -2,10 +2,11 @@ package com.barkatme.demo
 
 import android.app.Application
 import com.barkatme.data.dataModule
-import com.barkatme.demo.ui.main.coroutines.channel.ChannelsViewModel
 import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.ui.main.coroutines.channel.ChannelsViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.FlowViewModel
-import com.barkatme.demo.ui.main.coroutines.menu.MenuViewModel
+import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel
+import com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.koin.androidContext
@@ -17,9 +18,14 @@ import org.koin.dsl.module
 @FlowPreview
 @ExperimentalCoroutinesApi
 val presentationModule = module {
+
+    //coroutines
+    viewModel { CoroutinesMenuViewModel() }
     viewModel { FlowViewModel(get()) }
     viewModel { ChannelsViewModel() }
-    viewModel { MenuViewModel() }
+
+    //jetpack
+    viewModel { JetpackMenuViewModel() }
 }
 
 @ExperimentalCoroutinesApi

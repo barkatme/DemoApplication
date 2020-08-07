@@ -9,7 +9,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class MenuViewModel : ViewModel(), CoroutineScope {
+class CoroutinesMenuViewModel : ViewModel(), CoroutineScope {
 
     val channel = Channel<Int>()
 

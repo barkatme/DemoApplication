@@ -21,17 +21,9 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/menu_flow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{(view)->viewModel.navigate(viewModel.flowAction)}"
-                android:text="@string/flow" />
-
-            <Button
                 android:id="@+id/menu_channels"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{(view)->viewModel.navigate(viewModel.channelAction)}"
                 android:text="@string/channels" />
         </LinearLayout>
     </ScrollView>

@@ -18,7 +18,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class FlowFragment(layout: Int = R.layout.fragment_coroutines_flow) : BaseFragment(layout) {
+class FlowFragment(private val layout: Int = R.layout.fragment_coroutines_flow) :
+    BaseFragment(layout) {
 
     companion object {
         val TAG = FlowFragment::class.simpleName
@@ -32,7 +33,7 @@ class FlowFragment(layout: Int = R.layout.fragment_coroutines_flow) : BaseFragme
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentCoroutinesFlowBinding>(
             layoutInflater,
-            R.layout.fragment_coroutines_flow,
+            layout,
             container,
             false
         )

@@ -3,22 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/coroutines_graph">
+    app:startDestination="@id/coroutines">
 
     <navigation
-        android:id="@+id/coroutines_graph"
+        android:id="@+id/coroutines"
         app:startDestination="@id/coroutines">
         <fragment
             android:id="@+id/flowFragment"
             android:name="com.barkatme.demo.ui.main.coroutines.flow.FlowFragment"
-            android:label="FlowFragment" />
+            android:label="FlowFragment"
+            tools:layout="@layout/fragment_coroutines_flow" />
         <fragment
             android:id="@+id/channelsFragment"
             android:name="com.barkatme.demo.ui.main.coroutines.channel.ChannelsFragment"
-            android:label="ChannelsFragment" />
+            android:label="ChannelsFragment"
+            tools:layout="@layout/fragment_coroutines_channels" />
         <fragment
             android:id="@+id/coroutines"
-            android:name="com.barkatme.demo.ui.main.coroutines.menu.MenuFragment"
+            android:name="com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuFragment"
             android:label="fragment_menu"
             tools:layout="@layout/fragment_coroutiens_menu">
             <action
@@ -29,4 +31,26 @@
                 app:destination="@id/flowFragment" />
         </fragment>
     </navigation>
+
+    <navigation
+        android:id="@+id/jetpack"
+        app:startDestination="@id/jetpack">
+        <fragment
+            android:id="@+id/jetpack"
+            android:name="com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuFragment"
+            android:label="JetpackMenuFragment"
+            tools:layout="@layout/fragment_jetpack_menu" />
+    </navigation>
+
+
+    <navigation
+        android:id="@+id/room"
+        app:startDestination="@id/room">
+        <fragment
+            android:id="@+id/room"
+            android:name="com.barkatme.demo.ui.main.room.menu.RoomMenuFragment"
+            android:label="RoomMenuFragment"
+            tools:layout="@layout/fragment_room_menu" />
+    </navigation>
+
 </navigation>

@@ -15,7 +15,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ChannelsFragment(layout: Int = R.layout.fragment_coroutines_channels) : BaseFragment(layout) {
+class ChannelsFragment(private val layout: Int = R.layout.fragment_coroutines_channels) :
+    BaseFragment(layout) {
 
     companion object {
         val TAG = ChannelsFragment::class.simpleName
@@ -29,7 +30,7 @@ class ChannelsFragment(layout: Int = R.layout.fragment_coroutines_channels) : Ba
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentCoroutinesChannelsBinding>(
             inflater,
-            R.layout.fragment_coroutines_channels,
+            layout,
             container,
             false
         )
