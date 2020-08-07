@@ -1,4 +1,4 @@
-package com.barkatme.data.flow
+package com.barkatme.data.repository.flow
 
 import com.barkatme.data.model.placeholder.Comment
 import com.barkatme.data.model.placeholder.Post

@@ -1,6 +1,6 @@
 package com.barkatme.demo.domain
 
-import com.barkatme.data.flow.FlowRepository
+import com.barkatme.data.repository.flow.FlowRepository
 import kotlinx.coroutines.flow.flow
 
 class TestFlowInteractor(private val flowRepository: FlowRepository) {

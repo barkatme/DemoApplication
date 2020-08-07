@@ -28,4 +28,9 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.loadTrending()
+    }
+
 }

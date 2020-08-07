@@ -29,7 +29,7 @@ val presentationModule = module {
     viewModel { JetpackMenuViewModel() }
 
     //room
-    viewModel { RoomGiphyViewModel() }
+    viewModel { RoomGiphyViewModel(get()) }
 }
 
 @ExperimentalCoroutinesApi

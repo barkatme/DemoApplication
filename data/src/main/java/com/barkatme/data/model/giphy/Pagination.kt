@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Pagination(
-    val totalCount: Int,
-    val count: Int,
-    val offset: Int
+    val totalCount: Int? = null,
+    val count: Int? = null,
+    val offset: Int? = null
 )

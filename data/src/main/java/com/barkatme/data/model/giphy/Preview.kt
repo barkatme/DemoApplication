@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Preview(
-    val height: String,
-    val mp4: String,
-    val mp4Size: String,
-    val width: String
+    val height: String? = null,
+    val mp4: String? = null,
+    val mp4Size: String? = null,
+    val width: String? = null
 )

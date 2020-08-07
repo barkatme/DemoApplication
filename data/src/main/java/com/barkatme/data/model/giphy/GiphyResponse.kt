@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GiphyResponse(
-        val listGifData: List<GifData>,
+        val data: List<GifData>,
         val pagination: Pagination
 )
