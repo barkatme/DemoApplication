@@ -1,4 +1,4 @@
-package com.barkatme.demo.flow
+package com.barkatme.demo.ui.main.coroutines.flow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.barkatme.demo.R
-import com.barkatme.demo.databinding.FlowFragmentBinding
-import kotlinx.android.synthetic.main.flow_fragment.*
+import com.barkatme.demo.databinding.FragmentCoroutinesFlowBinding
+import com.barkatme.demo.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_coroutines_flow.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class FlowFragment : Fragment() {
+class FlowFragment(layout: Int = R.layout.fragment_coroutines_flow) : BaseFragment(layout) {
 
     companion object {
         val TAG = FlowFragment::class.simpleName
@@ -30,9 +30,9 @@ class FlowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FlowFragmentBinding>(
+        val binding = DataBindingUtil.inflate<FragmentCoroutinesFlowBinding>(
             layoutInflater,
-            R.layout.flow_fragment,
+            R.layout.fragment_coroutines_flow,
             container,
             false
         )

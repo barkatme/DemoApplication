@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/coroutines_graph">
+
+    <navigation
+        android:id="@+id/coroutines_graph"
+        app:startDestination="@id/coroutines">
+        <fragment
+            android:id="@+id/flowFragment"
+            android:name="com.barkatme.demo.ui.main.coroutines.flow.FlowFragment"
+            android:label="FlowFragment" />
+        <fragment
+            android:id="@+id/channelsFragment"
+            android:name="com.barkatme.demo.ui.main.coroutines.channel.ChannelsFragment"
+            android:label="ChannelsFragment" />
+        <fragment
+            android:id="@+id/coroutines"
+            android:name="com.barkatme.demo.ui.main.coroutines.menu.MenuFragment"
+            android:label="fragment_menu"
+            tools:layout="@layout/fragment_coroutiens_menu">
+            <action
+                android:id="@+id/action_menuFragment_to_channelsFragment"
+                app:destination="@id/channelsFragment" />
+            <action
+                android:id="@+id/action_menuFragment_to_flowFragment"
+                app:destination="@id/flowFragment" />
+        </fragment>
+    </navigation>
+</navigation>

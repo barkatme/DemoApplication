@@ -1,4 +1,4 @@
-package com.barkatme.demo.channel
+package com.barkatme.demo.ui.main.coroutines.channel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.barkatme.demo.menu
+package com.barkatme.demo.ui.main.coroutines.menu
 
 import androidx.lifecycle.ViewModel
 import com.barkatme.demo.R

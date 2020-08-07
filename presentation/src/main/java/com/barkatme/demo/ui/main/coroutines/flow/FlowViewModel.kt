@@ -1,4 +1,4 @@
-package com.barkatme.demo.flow
+package com.barkatme.demo.ui.main.coroutines.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

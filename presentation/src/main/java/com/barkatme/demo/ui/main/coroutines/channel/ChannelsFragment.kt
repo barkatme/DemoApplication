@@ -1,4 +1,4 @@
-package com.barkatme.demo.channel
+package com.barkatme.demo.ui.main.coroutines.channel
 
 import android.os.Build
 import android.os.Bundle
@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.barkatme.demo.R
-import com.barkatme.demo.databinding.ChannelsFragmentBinding
+import com.barkatme.demo.databinding.FragmentCoroutinesChannelsBinding
+import com.barkatme.demo.ui.base.BaseFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class ChannelsFragment : Fragment() {
+class ChannelsFragment(layout: Int = R.layout.fragment_coroutines_channels) : BaseFragment(layout) {
 
     companion object {
         val TAG = ChannelsFragment::class.simpleName
@@ -27,9 +27,9 @@ class ChannelsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<ChannelsFragmentBinding>(
+        val binding = DataBindingUtil.inflate<FragmentCoroutinesChannelsBinding>(
             inflater,
-            R.layout.channels_fragment,
+            R.layout.fragment_coroutines_channels,
             container,
             false
         )

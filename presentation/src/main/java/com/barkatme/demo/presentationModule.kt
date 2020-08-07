@@ -2,10 +2,10 @@ package com.barkatme.demo
 
 import android.app.Application
 import com.barkatme.data.dataModule
-import com.barkatme.demo.channel.ChannelsViewModel
+import com.barkatme.demo.ui.main.coroutines.channel.ChannelsViewModel
 import com.barkatme.demo.domain.domainModule
-import com.barkatme.demo.flow.FlowViewModel
-import com.barkatme.demo.menu.MenuViewModel
+import com.barkatme.demo.ui.main.coroutines.flow.FlowViewModel
+import com.barkatme.demo.ui.main.coroutines.menu.MenuViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.koin.androidContext

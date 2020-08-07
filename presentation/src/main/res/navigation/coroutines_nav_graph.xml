@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.barkatme.demo.menu.MenuFragment"
+        android:name="com.barkatme.demo.ui.main.coroutines.menu.MenuFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/menu_fragment" >
+        tools:layout="@layout/fragment_coroutiens_menu" >
         <action
             android:id="@+id/action_menuFragment_to_channelsFragment"
             app:destination="@id/channelsFragment" />
@@ -19,10 +19,10 @@
     </fragment>
     <fragment
         android:id="@+id/flowFragment"
-        android:name="com.barkatme.demo.flow.FlowFragment"
+        android:name="com.barkatme.demo.ui.main.coroutines.flow.FlowFragment"
         android:label="FlowFragment" />
     <fragment
         android:id="@+id/channelsFragment"
-        android:name="com.barkatme.demo.channel.ChannelsFragment"
+        android:name="com.barkatme.demo.ui.main.coroutines.channel.ChannelsFragment"
         android:label="ChannelsFragment" />
 </navigation>
