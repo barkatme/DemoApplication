@@ -34,6 +34,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "DATABASE_NAME", "\"DemoApplicationDatabase\"")
+        }
+        getByName("debug") {
+            buildConfigField("String", "DATABASE_NAME", "\"DemoApplicationDebugDatabase\"")
         }
     }
     buildFeatures {

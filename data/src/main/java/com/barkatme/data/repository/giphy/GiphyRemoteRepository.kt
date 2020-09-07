@@ -1,6 +1,6 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.data.repository
+package com.barkatme.data.repository.giphy
 
 import com.barkatme.data.model.giphy.GiphyResponse
 import com.barkatme.data.model.giphy.giphyResponseSerializer
@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 
-class GiphyRepository {
+class GiphyRemoteRepository {
     companion object {
 
         class Ratings {
@@ -46,7 +46,12 @@ class GiphyRepository {
         limit: Int? = null,
         rating: String? = null
     ): GiphyResponse = withContext(Dispatchers.IO) {
-        val parameters = mutableListOf(Pair(API_KEY_KEY, API_KEY))
+        val parameters = mutableListOf(
+            Pair(
+                API_KEY_KEY,
+                API_KEY
+            )
+        )
         offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
         limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
         rating?.let { parameters.add(Pair(RATING_KEY, it)) }

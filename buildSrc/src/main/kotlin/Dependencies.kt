@@ -16,7 +16,7 @@ object Libraries {
         const val koin = "2.1.5"
         const val recyclerview = "1.1.0"
         const val recyclerViewSelection = "1.1.0-rc01"
-        const val room = "1.1.1"
+        const val room = "2.2.5"
         const val glide = "4.11.0"
     }
 
@@ -74,8 +74,9 @@ object Libraries {
     }
 
     fun DependencyHandler.room(version: String = Versions.room) {
-        implementation("android.arch.persistence.room:runtime:$version")
-        kapt("android.arch.persistence.room:compiler:$version")
+        implementation("androidx.room:room-runtime:$version")
+        implementation("androidx.room:room-ktx:$version")
+        kapt("androidx.room:room-compiler:$version")
     }
 
     fun DependencyHandler.glide(version: String = Versions.glide) {

@@ -1,7 +1,11 @@
 package com.barkatme.demo
 
 import android.app.Application
+import androidx.room.Room
 import com.barkatme.data.dataModule
+import com.barkatme.data.repository.giphy.GiphyLocalRepository
+import com.barkatme.demo.data.GiphyLocalRepositoryImpl
+import com.barkatme.demo.data.room.AppDatabase
 import com.barkatme.demo.domain.domainModule
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
@@ -19,6 +23,18 @@ import org.koin.dsl.module
 @FlowPreview
 @ExperimentalCoroutinesApi
 val presentationModule = module {
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            AppDatabase::class.java,
+            BuildConfig.DATABASE_NAME
+        ).build()
+    }
+
+    single { get<AppDatabase>().gifDao() }
+
+    single<GiphyLocalRepository> { GiphyLocalRepositoryImpl(get()) }
 
     //coroutines
     viewModel { CoroutinesMenuViewModel() }
