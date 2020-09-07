@@ -22,7 +22,7 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
 
     val viewModel: RoomGiphyViewModel by viewModel()
     var initJob: Job? = null
-    val adapter = RoomGifsAdapter { gifData -> viewModel.onGifClick(gifData) }
+    val adapter = RoomGifsAdapter { gif -> viewModel.onGifClick(gif) }
 
 
     override fun onCreateView(

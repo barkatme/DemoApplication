@@ -2,8 +2,8 @@
 // http://www.softeq.com
 package com.barkatme.data.repository.giphy
 
-import com.barkatme.data.model.giphy.GiphyResponse
-import com.barkatme.data.model.giphy.giphyResponseSerializer
+import com.barkatme.data.model.giphy.remote.GiphyResponse
+import com.barkatme.data.model.giphy.remote.giphyResponseSerializer
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf

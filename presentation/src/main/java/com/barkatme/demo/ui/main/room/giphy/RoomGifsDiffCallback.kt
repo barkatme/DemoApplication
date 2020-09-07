@@ -3,13 +3,13 @@
 package com.barkatme.demo.ui.main.room.giphy
 
 import androidx.recyclerview.widget.DiffUtil
-import com.barkatme.data.model.giphy.GifData
+import com.barkatme.data.model.giphy.Gif
 
-class RoomGifsDiffCallback : DiffUtil.ItemCallback<GifData>() {
-    override fun areItemsTheSame(oldItem: GifData, newItem: GifData): Boolean =
-        oldItem.title == newItem.title && oldItem.images.original.url == newItem.images.original.url
+class RoomGifsDiffCallback : DiffUtil.ItemCallback<Gif>() {
+    override fun areItemsTheSame(oldItem: Gif, newItem: Gif): Boolean =
+        oldItem.title == newItem.title && oldItem.url == newItem.url
 
-    override fun areContentsTheSame(oldItem: GifData, newItem: GifData): Boolean =
+    override fun areContentsTheSame(oldItem: Gif, newItem: Gif): Boolean =
         oldItem == newItem
 
 }

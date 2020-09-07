@@ -7,14 +7,14 @@ import androidx.room.*
 @Dao
 interface GifDao {
     @Query("SELECT * FROM gifs")
-    suspend fun getGifs(): List<Gif>
+    suspend fun getGifs(): List<LocalGif>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGif(gif: Gif)
+    fun insertGif(localGif: LocalGif)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateGif(gif: Gif)
+    fun updateGif(localGif: LocalGif)
 
     @Delete
-    fun deleteGif(gif: Gif)
+    fun deleteGif(localGif: LocalGif)
 }

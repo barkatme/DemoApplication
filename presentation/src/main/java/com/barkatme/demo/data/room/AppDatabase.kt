@@ -4,11 +4,11 @@ package com.barkatme.demo.data.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.barkatme.demo.data.room.giphy.Gif
 import com.barkatme.demo.data.room.giphy.GifDao
+import com.barkatme.demo.data.room.giphy.LocalGif
 
 @Database(
-    entities = [Gif::class], version = 1
+    entities = [LocalGif::class], version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gifDao(): GifDao

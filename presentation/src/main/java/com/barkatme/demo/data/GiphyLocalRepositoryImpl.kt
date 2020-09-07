@@ -2,35 +2,17 @@
 // http://www.softeq.com
 package com.barkatme.demo.data
 
-import com.barkatme.data.model.giphy.*
+import com.barkatme.data.model.giphy.Gif
 import com.barkatme.data.repository.giphy.GiphyLocalRepository
 import com.barkatme.demo.data.room.giphy.GifDao
+import com.barkatme.demo.data.room.giphy.toGif
+import com.barkatme.demo.data.room.giphy.toLocalGif
 
 class GiphyLocalRepositoryImpl(val gifDao: GifDao) : GiphyLocalRepository {
-    override suspend fun trending(): GiphyResponse = GiphyResponse(
+    override suspend fun trending(): List<Gif> =
+        gifDao.getGifs().map { it.toGif() }
 
-        //temporary variant
-        listOf(
-            GifData(
-                "", "testItem", Images(
-                    Original(
-                        "",
-                        "",
-                        "",
-                        null,
-                        null,
-                        "",
-                        "https://media.giphy.com/media/gw3IWyGkC0rsazTi/giphy.gif",
-                        null,
-                        null,
-                        ""
-                    )
-                    , Preview()
-                )
-            )
-        ), Pagination()
-    )
-
-    override suspend fun saveTrending(giphyResponse: GiphyResponse) {
+    override suspend fun saveTrending(gifs: List<Gif>) {
+        gifs.forEach { gif -> gifDao.insertGif(gif.toLocalGif()) }
     }
 }

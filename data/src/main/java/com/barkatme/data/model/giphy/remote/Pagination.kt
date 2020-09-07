@@ -1,4 +1,4 @@
-package com.barkatme.data.model.giphy
+package com.barkatme.data.model.giphy.remote
 
 
 import kotlinx.serialization.Serializable

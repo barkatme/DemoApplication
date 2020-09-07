@@ -2,9 +2,9 @@
 // http://www.softeq.com
 package com.barkatme.data.repository.giphy
 
-import com.barkatme.data.model.giphy.GiphyResponse
+import com.barkatme.data.model.giphy.Gif
 
 interface GiphyLocalRepository {
-    suspend fun trending(): GiphyResponse
-    suspend fun saveTrending(giphyResponse: GiphyResponse)
+    suspend fun trending(): List<Gif>
+    suspend fun saveTrending(gifs: List<Gif>)
 }

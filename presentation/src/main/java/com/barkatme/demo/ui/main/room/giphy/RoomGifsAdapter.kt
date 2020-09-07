@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.barkatme.data.model.giphy.GifData
+import com.barkatme.data.model.giphy.Gif
 import com.barkatme.demo.R
 import com.barkatme.demo.ui.extentions.loadGif
 import kotlinx.android.synthetic.main.item_room_gif.view.*
 
-class RoomGifsAdapter(private val onClick: (GifData) -> Unit) :
-    ListAdapter<GifData, RoomGifsAdapter.ViewHolder>(RoomGifsDiffCallback()) {
+class RoomGifsAdapter(private val onClick: (Gif) -> Unit) :
+    ListAdapter<Gif, RoomGifsAdapter.ViewHolder>(RoomGifsDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater.inflate(R.layout.item_room_gif, parent, false))
@@ -25,10 +25,10 @@ class RoomGifsAdapter(private val onClick: (GifData) -> Unit) :
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(gifData: GifData, onClick: (GifData) -> Unit) {
-            itemView.tvGifTitle.text = gifData.title
-            itemView.imgImage.loadGif(gifData.images.original.url)
-            itemView.setOnClickListener { onClick(gifData) }
+        fun bind(gif: Gif, onClick: (Gif) -> Unit) {
+            itemView.tvGifTitle.text = gif.title
+            gif.url?.let { itemView.imgImage.loadGif(it) }
+            itemView.setOnClickListener { onClick(gif) }
         }
     }
 }
