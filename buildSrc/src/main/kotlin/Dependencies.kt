@@ -16,6 +16,8 @@ object Libraries {
         const val koin = "2.1.5"
         const val recyclerview = "1.1.0"
         const val recyclerViewSelection = "1.1.0-rc01"
+        const val room = "1.1.1"
+        const val glide = "4.11.0"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -33,19 +35,25 @@ object Libraries {
 
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
+
     // Koin for Android
     private const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
+
     // or Koin for Lifecycle scoping
     private const val koinAndroidx = "org.koin:koin-androidx-scope:${Versions.koin}"
+
     // or Koin for Android Architecture ViewModel
     private const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+
     // or Koin for Android Fragment Factory (unstable version)
     private const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
 
     const val androidxLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val androidxViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    const val androidxLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
-    const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val androidxLifecycleExtensions =
+        "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val androidxNavigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
@@ -59,10 +67,20 @@ object Libraries {
         implementation(koinFragment)
     }
 
-    fun DependencyHandler.fuel() {
+    fun DependencyHandler.fuel(version: String = Versions.fuel) {
         arrayOf("fuel", "fuel-coroutines", "fuel-kotlinx-serialization").forEach {
-            implementation("$fuelPrefix:$it:${Versions.fuel}")
+            implementation("$fuelPrefix:$it:$version")
         }
+    }
+
+    fun DependencyHandler.room(version: String = Versions.room) {
+        implementation("android.arch.persistence.room:runtime:$version")
+        kapt("android.arch.persistence.room:compiler:$version")
+    }
+
+    fun DependencyHandler.glide(version: String = Versions.glide) {
+        implementation("com.github.bumptech.glide:glide:$version")
+        kapt("com.github.bumptech.glide:compiler:$version")
     }
 }
 

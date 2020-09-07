@@ -6,4 +6,25 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+    <style name="Card" parent="AppTheme" />
+
+    <style name="Card.Room" />
+
+    <style name="Card.Room.Gif">
+        <item name="android:layout_margin">@dimen/margin_x</item>
+        <item name="android:layout_height">350dp</item>
+    </style>
+
+    <style name="Text" parent="AppTheme" />
+
+    <style name="Text.Room" />
+
+    <style name="Text.Room.GifTitle">
+        <item name="android:background">@color/roomGiphyTitleBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/roomGiphyTitleSize</item>
+        <item name="android:padding">@dimen/roomGiphyTitlePadding</item>
+    </style>
 </resources>
