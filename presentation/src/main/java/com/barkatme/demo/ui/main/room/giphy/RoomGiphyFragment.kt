@@ -41,8 +41,7 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
         super.onViewCreated(view, savedInstanceState)
         rvRoomGifs.adapter = adapter
         rvRoomGifs.layoutManager = LinearLayoutManager(context)
-        viewModel.setSearchFlow(svGifs.getQueryTextChangeStateFlow())
-        viewModel.gifs.observe(viewLifecycleOwner) { adapter.submitList(it) }
+        viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
+            .observe(viewLifecycleOwner) { adapter.submitList(it) }
     }
-
 }

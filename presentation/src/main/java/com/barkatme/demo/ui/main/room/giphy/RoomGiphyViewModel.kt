@@ -3,9 +3,9 @@
 package com.barkatme.demo.ui.main.room.giphy
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import com.barkatme.data.model.giphy.Gif
 import com.barkatme.demo.domain.interactor.giphy.SearchGifsInteractor
 import com.barkatme.demo.domain.interactor.giphy.TrendingGifsInteractor
@@ -13,7 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 class RoomGiphyViewModel(
     private val trendingGifsInteractor: TrendingGifsInteractor,
@@ -21,16 +20,7 @@ class RoomGiphyViewModel(
 ) : ViewModel() {
 
     companion object {
-        const val SEARCH_TIMEOUT = 3000L
-    }
-
-    val gifs = MutableLiveData<List<Gif>>()
-
-    private fun loadTrending() {
-        viewModelScope.launch {
-            val trending = trendingGifsInteractor.get()
-            gifs.postValue(trending)
-        }
+        const val SEARCH_TIMEOUT = 1600L
     }
 
     fun onGifClick(gif: Gif) {
@@ -39,29 +29,20 @@ class RoomGiphyViewModel(
 
     @FlowPreview
     @ExperimentalCoroutinesApi
-    fun setSearchFlow(searchStateFlow: StateFlow<String>) {
-        viewModelScope.launch {
-            searchStateFlow.debounce(SEARCH_TIMEOUT)
-                .distinctUntilChanged()
-                .flatMapLatest { queue ->
-                    flow {
-                        val received = mutableListOf<Gif>()
-                        queue.takeIf { !it.isBlank() }?.let {
+    fun createGifsLiveData(searchStateFlow: StateFlow<String>): LiveData<List<Gif>> =
+        searchStateFlow.debounce(SEARCH_TIMEOUT)
+            .distinctUntilChanged()
+            .flatMapLatest { queue ->
+                flow {
+                    emit(
+                        if (queue.isNotBlank()) {
                             searchGifsInteractor.get(queue)
-                        } ?: run { trendingGifsInteractor.get() }
-                            .asFlow()
-                            .collect {
-                                received.add(it)
-                            }
-                        emit(received)
-                    }
+                        } else {
+                            trendingGifsInteractor.get()
+                        }
+                    )
                 }
-                //makes above operators executing with that Dispatcher
-                .flowOn(Dispatchers.Default)
-                .collect { result ->
-                    gifs.value = result
-                }
-        }
-    }
+            }
+            .asLiveData(Dispatchers.Main)
 
 }

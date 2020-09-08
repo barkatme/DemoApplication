@@ -14,6 +14,7 @@ import com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuViewModel
 import com.barkatme.demo.ui.main.room.giphy.RoomGiphyViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.Channel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,13 +40,14 @@ val presentationModule = module {
     //coroutines
     viewModel { CoroutinesMenuViewModel() }
     viewModel { CoroutinesFlowViewModel(get()) }
-    viewModel { CoroutinesChannelViewModel() }
+    viewModel { CoroutinesChannelViewModel(get()) }
 
     //jetpack
     viewModel { JetpackMenuViewModel() }
 
     //room
     viewModel { RoomGiphyViewModel(get(), get()) }
+    single { Channel<Long>() }
 }
 
 @ExperimentalCoroutinesApi

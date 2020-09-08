@@ -7,7 +7,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
-class CoroutinesChannelViewModel : ViewModel(), CoroutineScope {
+class CoroutinesChannelViewModel(private val counterChannel: Channel<Long>) : ViewModel(),
+    CoroutineScope {
 
     companion object {
         const val MAX_LINES = 10
@@ -25,16 +26,17 @@ class CoroutinesChannelViewModel : ViewModel(), CoroutineScope {
 
     init {
         launch {
-            output.value = "press START button twice with some delay"
-            delay(2000)
-            output.value = ""
-        }
-        launch {
             while (!channel.isClosedForReceive) {
                 val next = withContext(Dispatchers.Default) { channel.receive() }
                 output.value += "\n" + next
             }
             output.value += "\ndone"
+        }
+        launch {
+            while (true) {
+                val secondsExists = withContext(Dispatchers.Default) { counterChannel.receive() }
+                output.value += "\nApp started $secondsExists seconds ago"
+            }
         }
     }
 
