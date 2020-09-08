@@ -1,6 +1,6 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.extantions
+package com.barkatme.demo.ui.extensions
 
 import android.view.View
 

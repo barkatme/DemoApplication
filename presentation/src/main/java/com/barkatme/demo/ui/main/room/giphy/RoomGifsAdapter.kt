@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.barkatme.data.model.giphy.Gif
 import com.barkatme.demo.R
-import com.barkatme.demo.ui.extentions.loadGif
+import com.barkatme.demo.ui.extensions.loadGif
 import kotlinx.android.synthetic.main.item_room_gif.view.*
 
 class RoomGifsAdapter(private val onClick: (Gif) -> Unit) :

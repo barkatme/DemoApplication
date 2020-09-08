@@ -1,6 +1,6 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.ui.extentions
+package com.barkatme.demo.ui.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
