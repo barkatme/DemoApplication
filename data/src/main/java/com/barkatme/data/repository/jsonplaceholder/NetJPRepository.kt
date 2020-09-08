@@ -1,4 +1,4 @@
-package com.barkatme.data.repository
+package com.barkatme.data.repository.jsonplaceholder
 
 import com.barkatme.data.model.placeholder.Comment
 import com.barkatme.data.model.placeholder.Post
@@ -9,7 +9,7 @@ import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
 import kotlinx.coroutines.*
 import kotlinx.serialization.builtins.list
 
-class NetRepository : Repository {
+class NetJPRepository : JPRepository {
     override suspend fun test() = withContext(Dispatchers.IO) {
         "https://jsonplaceholder.typicode.com/todos/1".httpGet()
             .await(kotlinxDeserializerOf(Todo.serializer))
