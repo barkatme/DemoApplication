@@ -44,14 +44,8 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
     }
 
-    /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
 
-    /**
-     * We need a display listener for orientation changes that do not trigger a configuration
-     * change, for example if we choose to override config change in manifest or for 180-degree
-     * orientation changes.
-     */
     private val displayListener = object : DisplayManager.DisplayListener {
         override fun onDisplayAdded(displayId: Int) = Unit
         override fun onDisplayRemoved(displayId: Int) = Unit
@@ -68,18 +62,14 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
-        // Every time the orientation of device changes, update rotation for use cases
         displayManager.registerDisplayListener(displayListener, null)
         val binding =
             DataBindingUtil.inflate<FragmentCameraXBinding>(inflater, layout, container, false)
         binding.viewModel = viewModel
         viewFinder = binding.root.previewView
         viewFinder.post {
-            // Keep track of the display in which this view is attached
             displayId = viewFinder.display.displayId
-            // Set up the camera and its use cases
             setUpCamera()
         }
         return binding.root
@@ -89,51 +79,33 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener(Runnable {
-
-            // CameraProvider
             cameraProvider = cameraProviderFuture.get()
-
-            // Select lensFacing depending on the available cameras
             lensFacing = when {
                 hasBackCamera() -> CameraSelector.LENS_FACING_BACK
                 hasFrontCamera() -> CameraSelector.LENS_FACING_FRONT
                 else -> throw IllegalStateException("Back and front camera are unavailable")
             }
-
-            // Build and bind the camera use cases
             bindCameraUseCases()
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
-    /** Declare and bind preview, capture and analysis use cases */
     private fun bindCameraUseCases() {
         val rotation = viewFinder.display.rotation
-        // CameraProvider
         val cameraProvider = cameraProvider
             ?: throw IllegalStateException("Camera initialization failed.")
-        // CameraSelector
         val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
-        // Preview
         preview = Preview.Builder()
-            // Set initial target rotation
             .setTargetRotation(rotation)
             .build()
 
-        // ImageCapture
         imageCapture = ImageCapture.Builder()
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-            // Set initial target rotation, we will have to call this again if rotation changes
-            // during the lifecycle of this use case
             .setTargetRotation(rotation)
             .build()
 
-        // ImageAnalysis
         imageAnalyzer = ImageAnalysis.Builder()
-            // Set initial target rotation, we will have to call this again if rotation changes
-            // during the lifecycle of this use case
             .setTargetRotation(rotation)
             .build()
-            // The analyzer can then be assigned to the instance
             .also {
 //                it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
 //                    // Values returned from our analyzer are passed to the attached listener
@@ -142,27 +114,21 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
 //                    Log.d(TAG, "Average luminosity: $luma")
 //                })
             }
-        // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll()
         try {
-            // A variable number of use-cases can be passed here -
-            // camera provides access to CameraControl & CameraInfo
             camera = cameraProvider.bindToLifecycle(
                 this, cameraSelector, preview, imageCapture, imageAnalyzer
             )
-            // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(viewFinder.createSurfaceProvider())
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }
     }
 
-    /** Returns true if the device has an available back camera. False otherwise */
     private fun hasBackCamera(): Boolean {
         return cameraProvider?.hasCamera(CameraSelector.DEFAULT_BACK_CAMERA) ?: false
     }
 
-    /** Returns true if the device has an available front camera. False otherwise */
     private fun hasFrontCamera(): Boolean {
         return cameraProvider?.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA) ?: false
     }
