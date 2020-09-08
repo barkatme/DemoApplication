@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.observe
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentRoomGiphyBinding
@@ -16,6 +17,7 @@ import com.barkatme.demo.ui.extensions.getQueryTextChangeStateFlow
 import kotlinx.android.synthetic.main.fragment_room_giphy.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) :
@@ -41,7 +43,9 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
         super.onViewCreated(view, savedInstanceState)
         rvRoomGifs.adapter = adapter
         rvRoomGifs.layoutManager = LinearLayoutManager(context)
-        viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
-            .observe(viewLifecycleOwner) { adapter.submitList(it) }
+        lifecycleScope.launchWhenCreated {
+            viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
+                .asFlow().collect { gifs -> adapter.submitList(gifs) }
+        }
     }
 }
