@@ -17,7 +17,8 @@ import com.barkatme.demo.ui.extensions.getQueryTextChangeStateFlow
 import kotlinx.android.synthetic.main.fragment_room_giphy.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) :
@@ -43,9 +44,9 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
         super.onViewCreated(view, savedInstanceState)
         rvRoomGifs.adapter = adapter
         rvRoomGifs.layoutManager = LinearLayoutManager(context)
-        lifecycleScope.launchWhenCreated {
-            viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
-                .asFlow().collect { gifs -> adapter.submitList(gifs) }
-        }
+        viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
+            .asFlow()
+            .onEach { adapter.submitList(it) }
+            .launchIn(lifecycleScope)
     }
 }
