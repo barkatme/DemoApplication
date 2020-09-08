@@ -32,18 +32,18 @@ class GiphyRemoteRepository {
         const val DEFAULT_LIMIT = 10
         const val DEFAULT_LANGUAGE = "en"
 
-        const val API_KEY_KEY = "api_key"
-        const val QUEUE_KEY = "q"
-        const val LIMIT_KEY = "limit"
-        const val OFFSET_KEY = "offset"
-        const val RATING_KEY = "rating"
+        const val API_KEY_PARAMETER = "api_key"
+        const val QUEUE_PARAMETER = "q"
+        const val LIMIT_PARAMETER = "limit"
+        const val OFFSET_PARAMETER = "offset"
+        const val RATING_PARAMETER = "rating"
     }
 
     @Suppress("EXPERIMENTAL_API_USAGE")
     private val json = Json(JsonConfiguration(ignoreUnknownKeys = true))
 
-    val apiKeyParameter = Pair(
-        API_KEY_KEY,
+    private val apiKeyParameter = Pair(
+        API_KEY_PARAMETER,
         API_KEY
     )
 
@@ -54,9 +54,9 @@ class GiphyRemoteRepository {
     ): GiphyResponse {
         return withContext(Dispatchers.IO) {
             val parameters = mutableListOf(apiKeyParameter)
-            offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
-            limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
-            rating?.let { parameters.add(Pair(RATING_KEY, it)) }
+            offset?.let { parameters.add(Pair(OFFSET_PARAMETER, it.toString())) }
+            limit?.let { parameters.add(Pair(LIMIT_PARAMETER, it.toString())) }
+            rating?.let { parameters.add(Pair(RATING_PARAMETER, it)) }
             "${BASE_URL}trending".httpGet(parameters)
                 .await(
                     kotlinxDeserializerOf(giphyResponseSerializer, json)
@@ -71,10 +71,10 @@ class GiphyRemoteRepository {
         rating: String? = null
     ): GiphyResponse = withContext(Dispatchers.IO) {
         val parameters = mutableListOf(apiKeyParameter)
-        parameters.add(Pair(QUEUE_KEY, queue))
-        offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
-        limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
-        rating?.let { parameters.add(Pair(RATING_KEY, it)) }
+        parameters.add(Pair(QUEUE_PARAMETER, queue))
+        offset?.let { parameters.add(Pair(OFFSET_PARAMETER, it.toString())) }
+        limit?.let { parameters.add(Pair(LIMIT_PARAMETER, it.toString())) }
+        rating?.let { parameters.add(Pair(RATING_PARAMETER, it)) }
         "${BASE_URL}search".httpGet(parameters)
             .await(
                 kotlinxDeserializerOf(giphyResponseSerializer, json)
