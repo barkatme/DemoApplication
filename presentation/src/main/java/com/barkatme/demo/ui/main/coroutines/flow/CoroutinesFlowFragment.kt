@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentCoroutinesFlowBinding
 import com.barkatme.demo.ui.base.BaseFragment
+import com.barkatme.demo.ui.extensions.getQueryTextChangeStateFlow
 import kotlinx.android.synthetic.main.fragment_coroutines_flow.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @FlowPreview
@@ -45,20 +43,5 @@ class CoroutinesFlowFragment(private val layout: Int = R.layout.fragment_corouti
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setSearchFlow(searchView.getQueryTextChangeStateFlow())
-    }
-
-    private fun SearchView.getQueryTextChangeStateFlow(): StateFlow<String> {
-        val query = MutableStateFlow("")
-        setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                query.value = newText
-                return true
-            }
-        })
-        return query
     }
 }
