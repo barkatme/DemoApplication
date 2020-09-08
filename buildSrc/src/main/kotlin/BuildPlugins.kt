@@ -9,7 +9,7 @@ object BuildPlugins {
     const val kotlinSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
     const val androidApplication = "com.android.application"
     const val kotlin = "kotlin"
-    const val serialization = "org.jetbrains.kotlin.plugin.serialization"
+    const val serialization = "kotlinx-serialization"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"

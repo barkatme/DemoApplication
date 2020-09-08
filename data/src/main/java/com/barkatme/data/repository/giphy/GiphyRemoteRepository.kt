@@ -33,6 +33,7 @@ class GiphyRemoteRepository {
         const val DEFAULT_LANGUAGE = "en"
 
         const val API_KEY_KEY = "api_key"
+        const val QUEUE_KEY = "q"
         const val LIMIT_KEY = "limit"
         const val OFFSET_KEY = "offset"
         const val RATING_KEY = "rating"
@@ -56,6 +57,28 @@ class GiphyRemoteRepository {
         limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
         rating?.let { parameters.add(Pair(RATING_KEY, it)) }
         "${BASE_URL}trending".httpGet(parameters)
+            .await(
+                kotlinxDeserializerOf(giphyResponseSerializer, json)
+            )
+    }
+
+    suspend fun search(
+        queue: String,
+        offset: Int? = null,
+        limit: Int? = null,
+        rating: String? = null
+    ): GiphyResponse = withContext(Dispatchers.IO) {
+        val parameters = mutableListOf(
+            Pair(
+                API_KEY_KEY,
+                API_KEY
+            )
+        )
+        parameters.add(Pair(QUEUE_KEY, queue))
+        offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
+        limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
+        rating?.let { parameters.add(Pair(RATING_KEY, it)) }
+        "${BASE_URL}search".httpGet(parameters)
             .await(
                 kotlinxDeserializerOf(giphyResponseSerializer, json)
             )

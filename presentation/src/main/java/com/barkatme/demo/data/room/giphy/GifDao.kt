@@ -8,6 +8,9 @@ import androidx.room.*
 interface GifDao {
     @Query("SELECT * FROM gifs")
     suspend fun getGifs(): List<LocalGif>
+//
+//    @Query("SELECT * FROM gifs where gif_title LIKE '%:queue%'")
+//    suspend fun searchGifs(queue: String): List<LocalGif>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGif(localGif: LocalGif)

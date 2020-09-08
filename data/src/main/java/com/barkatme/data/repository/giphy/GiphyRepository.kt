@@ -21,9 +21,25 @@ class GiphyRepository(
         var gifs: List<Gif>
         try {
             gifs = remote.trending(offset, limit, rating).data.map { it.toGif() }
-            local.saveTrending(gifs)
+            local.save(gifs)
         } catch (fuelError: FuelError) {
             gifs = local.trending()
+        }
+        return@withContext gifs
+    }
+
+    suspend fun search(
+        queue: String,
+        offset: Int? = null,
+        limit: Int? = null,
+        rating: String? = null
+    ): List<Gif> = withContext(Dispatchers.IO) {
+        var gifs: List<Gif>
+        try {
+            gifs = remote.search(queue, offset, limit, rating).data.map { it.toGif() }
+            local.save(gifs)
+        } catch (fuelError: FuelError) {
+            gifs = local.search(queue)
         }
         return@withContext gifs
     }

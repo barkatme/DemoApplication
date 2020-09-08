@@ -5,15 +5,15 @@ const val kotlinVersion = "1.3.72"
 object Libraries {
     private object Versions {
         const val navigation = "2.3.0"
-        const val jetpack = "1.1.0"
+        const val jetpack = "1.2.0"
         const val constraintLayout = "1.1.3"
-        const val ktx = "1.3.0"
+        const val ktx = "1.3.1"
         const val ktxFragment = "1.2.5"
-        const val coroutines = "1.3.7"
+        const val coroutines = "1.3.9"
         const val fuel = "2.2.3"
         const val serialization = "0.20.0"
         const val lifecycle = "2.2.0"
-        const val koin = "2.1.5"
+        const val koin = "2.1.6"
         const val recyclerview = "1.1.0"
         const val recyclerViewSelection = "1.1.0-rc01"
         const val room = "2.2.5"
@@ -29,7 +29,7 @@ object Libraries {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
             Versions.coroutines
-    const val fuelPrefix = "com.github.kittinunf.fuel"
+    private const val fuelPrefix = "com.github.kittinunf.fuel"
     const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:" +
             Versions.serialization
 

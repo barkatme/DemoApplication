@@ -6,5 +6,6 @@ import com.barkatme.data.model.giphy.Gif
 
 interface GiphyLocalRepository {
     suspend fun trending(): List<Gif>
-    suspend fun saveTrending(gifs: List<Gif>)
+    suspend fun save(gifs: List<Gif>)
+    suspend fun search(queue: String): List<Gif>
 }
