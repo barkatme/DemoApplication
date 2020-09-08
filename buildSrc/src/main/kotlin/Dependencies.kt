@@ -18,6 +18,7 @@ object Libraries {
         const val recyclerViewSelection = "1.1.0-rc01"
         const val room = "2.2.5"
         const val glide = "4.11.0"
+        const val cameraX = "1.0.0-beta08"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -29,9 +30,13 @@ object Libraries {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
             Versions.coroutines
-    private const val fuelPrefix = "com.github.kittinunf.fuel"
     const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:" +
             Versions.serialization
+
+
+    private const val fuelPrefix = "com.github.kittinunf.fuel"
+
+    private const val androidXCameraPrefix = "androidx.camera"
 
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
@@ -65,6 +70,18 @@ object Libraries {
         implementation(koinAndroidx)
         implementation(koinViewModel)
         implementation(koinFragment)
+    }
+
+    fun DependencyHandler.androidXCamera(version: String = Versions.cameraX) {
+        arrayOf(
+            "camera-core",
+            "camera-camera2",
+            "camera-lifecycle"
+        ).forEach {
+            implementation("$androidXCameraPrefix:$it:$version")
+        }
+        implementation("$androidXCameraPrefix:camera-view:1.0.0-alpha15")
+        implementation("$androidXCameraPrefix:camera-extensions:1.0.0-alpha15")
     }
 
     fun DependencyHandler.fuel(version: String = Versions.fuel) {

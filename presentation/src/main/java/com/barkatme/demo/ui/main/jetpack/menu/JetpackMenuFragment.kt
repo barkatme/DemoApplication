@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentJetpackMenuBinding
 import com.barkatme.demo.ui.base.BaseFragment
+import com.barkatme.demo.ui.extensions.doOnClick
+import kotlinx.android.synthetic.main.fragment_jetpack_menu.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_menu) :
@@ -30,5 +33,10 @@ class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_me
         )
         binding.viewModel = viewModel
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.menu_camera_x.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackCameraXFragment) }
     }
 }

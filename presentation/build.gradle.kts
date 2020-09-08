@@ -1,3 +1,4 @@
+import Libraries.androidXCamera
 import Libraries.fuel
 import Libraries.glide
 import Libraries.koinAndroid
@@ -61,6 +62,9 @@ dependencies {
     fuel()
     room()
     glide()
+
+    //Jetpack
+    androidXCamera()
 
     implementation(Libraries.androidxViewModel)
     implementation(Libraries.androidxLiveData)

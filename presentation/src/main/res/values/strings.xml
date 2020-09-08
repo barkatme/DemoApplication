@@ -5,6 +5,7 @@
     <string name="get_todos">get todos</string>
     <string name="flow">Flow</string>
     <string name="channels">Channels</string>
+    <string name="camera_x">Camera X</string>
     <string name="start">start</string>
     <string name="coroutines">Coroutines</string>
     <string name="jetpack">Jetpack</string>

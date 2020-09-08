@@ -8,4 +8,5 @@
 
     <dimen name="roomGiphyTitleSize">18sp</dimen>
     <dimen name="roomGiphyTitlePadding">8dp</dimen>
+    <dimen name="previewCameraHeight">400dp</dimen>
 </resources>

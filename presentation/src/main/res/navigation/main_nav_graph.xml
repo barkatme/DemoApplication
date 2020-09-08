@@ -39,7 +39,16 @@
             android:id="@+id/jetpack"
             android:name="com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuFragment"
             android:label="JetpackMenuFragment"
-            tools:layout="@layout/fragment_jetpack_menu" />
+            tools:layout="@layout/fragment_jetpack_menu">
+            <action
+                android:id="@+id/action_jetpack_to_jetpackCameraXFragment"
+                app:destination="@id/jetpackCameraXFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/jetpackCameraXFragment"
+            android:name="com.barkatme.demo.ui.main.jetpack.camerax.JetpackCameraXFragment"
+            android:label="JetpackCameraXFragment"
+            tools:layout="@layout/fragment_camera_x" />
     </navigation>
 
 
