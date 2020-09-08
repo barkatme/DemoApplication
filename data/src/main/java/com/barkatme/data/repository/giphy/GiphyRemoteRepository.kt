@@ -42,24 +42,26 @@ class GiphyRemoteRepository {
     @Suppress("EXPERIMENTAL_API_USAGE")
     private val json = Json(JsonConfiguration(ignoreUnknownKeys = true))
 
+    val apiKeyParameter = Pair(
+        API_KEY_KEY,
+        API_KEY
+    )
+
     suspend fun trending(
         offset: Int? = null,
         limit: Int? = null,
         rating: String? = null
-    ): GiphyResponse = withContext(Dispatchers.IO) {
-        val parameters = mutableListOf(
-            Pair(
-                API_KEY_KEY,
-                API_KEY
-            )
-        )
-        offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
-        limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
-        rating?.let { parameters.add(Pair(RATING_KEY, it)) }
-        "${BASE_URL}trending".httpGet(parameters)
-            .await(
-                kotlinxDeserializerOf(giphyResponseSerializer, json)
-            )
+    ): GiphyResponse {
+        return withContext(Dispatchers.IO) {
+            val parameters = mutableListOf(apiKeyParameter)
+            offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
+            limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
+            rating?.let { parameters.add(Pair(RATING_KEY, it)) }
+            "${BASE_URL}trending".httpGet(parameters)
+                .await(
+                    kotlinxDeserializerOf(giphyResponseSerializer, json)
+                )
+        }
     }
 
     suspend fun search(
@@ -68,12 +70,7 @@ class GiphyRemoteRepository {
         limit: Int? = null,
         rating: String? = null
     ): GiphyResponse = withContext(Dispatchers.IO) {
-        val parameters = mutableListOf(
-            Pair(
-                API_KEY_KEY,
-                API_KEY
-            )
-        )
+        val parameters = mutableListOf(apiKeyParameter)
         parameters.add(Pair(QUEUE_KEY, queue))
         offset?.let { parameters.add(Pair(OFFSET_KEY, it.toString())) }
         limit?.let { parameters.add(Pair(LIMIT_KEY, it.toString())) }
