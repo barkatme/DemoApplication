@@ -23,11 +23,10 @@ class RoomGifsAdapter(private val onClick: (Gif) -> Unit) :
         holder.bind(getItem(position), onClick)
     }
 
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(gif: Gif, onClick: (Gif) -> Unit) {
             itemView.tvGifTitle.text = gif.title
-            gif.url?.let { itemView.imgImage.loadGif(it) }
+            gif.url?.let { itemView.imgImage.loadGif(it, gif.previewUrl) }
             itemView.setOnClickListener { onClick(gif) }
         }
     }

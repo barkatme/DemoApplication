@@ -7,7 +7,8 @@ import com.barkatme.data.model.giphy.remote.GifData
 data class Gif(
     val id: String,
     val title: String? = null,
-    val url: String? = null
+    val url: String? = null,
+    val previewUrl: String? = null
 )
 
-fun GifData.toGif() = Gif(id, title, images.original.url)
+fun GifData.toGif() = Gif(id, title, images.original.url, images.preview.mp4)
