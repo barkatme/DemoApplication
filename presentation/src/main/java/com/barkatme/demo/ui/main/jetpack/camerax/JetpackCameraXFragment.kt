@@ -37,7 +37,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
     private var imageCapture: ImageCapture? = null
-    private var imageAnalyzer: ImageAnalysis? = null
+    private var imageAnalysis: ImageAnalysis? = null
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
     private val displayManager by lazy {
@@ -52,7 +52,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         override fun onDisplayChanged(displayId: Int) = view?.let { view ->
             if (displayId == this@JetpackCameraXFragment.displayId) {
                 imageCapture?.targetRotation = view.display.rotation
-                imageAnalyzer?.targetRotation = view.display.rotation
+                imageAnalysis?.targetRotation = view.display.rotation
             }
         } ?: Unit
     }
@@ -97,27 +97,14 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         preview = Preview.Builder()
             .setTargetRotation(rotation)
             .build()
-
         imageCapture = ImageCapture.Builder()
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
             .setTargetRotation(rotation)
             .build()
-
-        imageAnalyzer = ImageAnalysis.Builder()
-            .setTargetRotation(rotation)
-            .build()
-            .also {
-//                it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
-//                    // Values returned from our analyzer are passed to the attached listener
-//                    // We log image analysis results here - you should do something useful
-//                    // instead!
-//                    Log.d(TAG, "Average luminosity: $luma")
-//                })
-            }
         cameraProvider.unbindAll()
         try {
             camera = cameraProvider.bindToLifecycle(
-                this, cameraSelector, preview, imageCapture, imageAnalyzer
+                this, cameraSelector, preview, imageCapture, imageAnalysis
             )
             preview?.setSurfaceProvider(viewFinder.createSurfaceProvider())
         } catch (exc: Exception) {
