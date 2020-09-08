@@ -23,7 +23,7 @@ class GiphyRepository(
             gifs = remote.trending(offset, limit, rating).data.map { it.toGif() }
             local.save(gifs)
         } catch (fuelError: FuelError) {
-            gifs = local.trending()
+            gifs = local.getAll()
         }
         return@withContext gifs
     }

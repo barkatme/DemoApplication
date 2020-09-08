@@ -9,7 +9,7 @@ import com.barkatme.demo.data.room.giphy.toGif
 import com.barkatme.demo.data.room.giphy.toLocalGif
 
 class GiphyLocalRepositoryImpl(private val gifDao: GifDao) : GiphyLocalRepository {
-    override suspend fun trending(): List<Gif> =
+    override suspend fun getAll(): List<Gif> =
         gifDao.getGifs().map { it.toGif() }
 
     override suspend fun save(gifs: List<Gif>) {
@@ -17,5 +17,5 @@ class GiphyLocalRepositoryImpl(private val gifDao: GifDao) : GiphyLocalRepositor
     }
 
     override suspend fun search(queue: String): List<Gif> =
-        gifDao.getGifs().map { it.toGif() }
+        getAll().filter { it.title?.contains(queue, true) ?: false }
 }
