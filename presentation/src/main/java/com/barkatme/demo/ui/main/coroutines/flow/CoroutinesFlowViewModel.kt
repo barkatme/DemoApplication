@@ -2,7 +2,7 @@ package com.barkatme.demo.ui.main.coroutines.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.barkatme.demo.domain.TestFlowInteractor
+import com.barkatme.demo.domain.interactor.flow.TestFlowInteractor
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.CoroutineContext

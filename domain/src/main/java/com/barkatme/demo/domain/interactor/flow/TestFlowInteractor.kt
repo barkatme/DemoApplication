@@ -1,4 +1,4 @@
-package com.barkatme.demo.domain
+package com.barkatme.demo.domain.interactor.flow
 
 import com.barkatme.data.repository.flow.FlowRepository
 import kotlinx.coroutines.flow.flow
