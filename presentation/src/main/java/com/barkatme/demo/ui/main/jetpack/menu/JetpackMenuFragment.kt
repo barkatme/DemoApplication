@@ -38,5 +38,6 @@ class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_me
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.menu_camera_x.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackCameraXFragment) }
+        view.menu_jetpack_paging.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackPagingFragment) }
     }
 }

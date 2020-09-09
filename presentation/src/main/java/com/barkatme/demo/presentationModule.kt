@@ -12,6 +12,7 @@ import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
 import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel
 import com.barkatme.demo.ui.main.jetpack.camerax.JetpackCameraXViewModel
 import com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuViewModel
+import com.barkatme.demo.ui.main.jetpack.paging.JetpackPagingViewModel
 import com.barkatme.demo.ui.main.room.giphy.RoomGiphyViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -46,6 +47,7 @@ val presentationModule = module {
     //jetpack
     viewModel { JetpackMenuViewModel() }
     viewModel { JetpackCameraXViewModel() }
+    viewModel { JetpackPagingViewModel(get()) }
 
     //room
     viewModel { RoomGiphyViewModel(get(), get()) }

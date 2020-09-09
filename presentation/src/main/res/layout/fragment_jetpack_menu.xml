@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,8 +9,7 @@
             type="com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuViewModel" />
     </data>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_x"
@@ -26,6 +26,13 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/camera_x" />
+
+            <Button
+                android:id="@+id/menu_jetpack_paging"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/jetpack_paging" />
         </LinearLayout>
     </ScrollView>
 </layout>

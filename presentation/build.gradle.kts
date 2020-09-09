@@ -60,18 +60,17 @@ dependencies {
 
     koinAndroid()
     fuel()
-    room()
     glide()
 
     //Jetpack
+    room()
     androidXCamera()
-
+    implementation(Libraries.paging)
     implementation(Libraries.androidxViewModel)
     implementation(Libraries.androidxLiveData)
     implementation(Libraries.androidxLifecycleExtensions)
     implementation(Libraries.androidxNavigationFragment)
     implementation(Libraries.androidxNavigationUi)
-
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.recyclerView)

@@ -43,12 +43,20 @@
             <action
                 android:id="@+id/action_jetpack_to_jetpackCameraXFragment"
                 app:destination="@id/jetpackCameraXFragment" />
+            <action
+                android:id="@+id/action_jetpack_to_jetpackPagingFragment"
+                app:destination="@id/jetpackPagingFragment" />
         </fragment>
         <fragment
             android:id="@+id/jetpackCameraXFragment"
             android:name="com.barkatme.demo.ui.main.jetpack.camerax.JetpackCameraXFragment"
             android:label="JetpackCameraXFragment"
             tools:layout="@layout/fragment_camera_x" />
+        <fragment
+            android:id="@+id/jetpackPagingFragment"
+            android:name="com.barkatme.demo.ui.main.jetpack.paging.JetpackPagingFragment"
+            android:label="JetpackPagingFragment"
+            tools:layout="@layout/fragment_jetpack_paging" />
     </navigation>
 
 

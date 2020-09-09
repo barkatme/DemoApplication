@@ -2,6 +2,7 @@
 // http://www.softeq.com
 package com.barkatme.demo.data.room.giphy
 
+import androidx.paging.DataSource
 import androidx.room.*
 
 @Dao
@@ -20,4 +21,10 @@ interface GifDao {
 
     @Delete
     fun deleteGif(localGif: LocalGif)
+
+    @Query("SELECT * FROM gifs order by gif_id")
+    fun loadAllGifs(): DataSource.Factory<Int, LocalGif>
+
+    @Query("SELECT * FROM gifs where gif_title LIKE :name order by gif_id")
+    fun loadAllGifsByTitle(name: String): DataSource.Factory<Int, LocalGif>
 }

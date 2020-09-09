@@ -19,6 +19,7 @@ object Libraries {
         const val room = "2.2.5"
         const val glide = "4.11.0"
         const val cameraX = "1.0.0-beta08"
+        const val paging = "2.1.2"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -37,6 +38,7 @@ object Libraries {
     private const val fuelPrefix = "com.github.kittinunf.fuel"
 
     private const val androidXCameraPrefix = "androidx.camera"
+    const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
