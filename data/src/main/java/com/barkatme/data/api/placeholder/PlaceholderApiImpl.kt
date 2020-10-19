@@ -1,10 +1,10 @@
-package com.barkatme.data.repository.jsonplaceholder
+package com.barkatme.data.api.placeholder
 
 import com.barkatme.data.model.placeholder.Comment
 import com.barkatme.data.model.placeholder.Post
 import com.barkatme.data.model.placeholder.Todo
 import com.barkatme.data.model.placeholder.toDomainModel
-import com.barkatme.demo.domain.repository.JPRepository
+import com.barkatme.demo.domain.data.api.PlaceholderApi
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
@@ -14,7 +14,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.list
 
-class NetJPRepository : JPRepository {
+class PlaceholderApiImpl : PlaceholderApi {
     override suspend fun test() = withContext(Dispatchers.IO) {
         "https://jsonplaceholder.typicode.com/todos/1".httpGet()
             .await(kotlinxDeserializerOf(Todo.serializer))

@@ -1,10 +1,10 @@
-package com.barkatme.data.repository.flow
+package com.barkatme.data.api.placeholder
 
 import com.barkatme.data.model.placeholder.Comment
 import com.barkatme.data.model.placeholder.Post
 import com.barkatme.data.model.placeholder.Todo
 import com.barkatme.data.model.placeholder.toDomainModel
-import com.barkatme.demo.domain.repository.FlowRepository
+import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
 
-class NetFlowRepository : FlowRepository {
+class PlaceholderFlowApiImpl : PlaceholderFlowApi {
 
     override suspend fun todo(n: Int) = withContext(Dispatchers.IO) {
         "https://jsonplaceholder.typicode.com/todos/$n".httpGet()

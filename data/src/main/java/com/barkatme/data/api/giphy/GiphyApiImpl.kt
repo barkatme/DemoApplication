@@ -1,11 +1,11 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.data.repository.giphy
+package com.barkatme.data.api.giphy
 
 import com.barkatme.data.model.giphy.remote.giphyResponseSerializer
 import com.barkatme.data.model.giphy.toDomainModel
 import com.barkatme.data.model.giphy.toGif
-import com.barkatme.demo.domain.api.GiphyApi
+import com.barkatme.demo.domain.data.api.GiphyApi
 import com.barkatme.demo.domain.model.giphy.Gif
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet

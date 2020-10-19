@@ -5,8 +5,8 @@ import androidx.room.Room
 import com.barkatme.data.dataModule
 import com.barkatme.demo.data.GiphyLocalRepositoryImpl
 import com.barkatme.demo.data.room.AppDatabase
+import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
 import com.barkatme.demo.domain.domainModule
-import com.barkatme.demo.domain.repository.GiphyLocalRepository
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
 import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel

@@ -2,7 +2,7 @@
 // http://www.softeq.com
 package com.barkatme.demo.domain.interactor.giphy
 
-import com.barkatme.demo.domain.repository.GiphyRepository
+import com.barkatme.demo.domain.data.repository.GiphyRepository
 
 
 class SearchGifsInteractor(private val repository: GiphyRepository) {

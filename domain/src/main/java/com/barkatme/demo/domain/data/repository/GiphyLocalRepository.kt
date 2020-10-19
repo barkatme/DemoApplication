@@ -1,6 +1,6 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.domain.repository
+package com.barkatme.demo.domain.data.repository
 
 import com.barkatme.demo.domain.model.giphy.Gif
 

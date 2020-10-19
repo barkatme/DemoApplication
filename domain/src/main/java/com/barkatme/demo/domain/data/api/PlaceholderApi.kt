@@ -1,11 +1,11 @@
-package com.barkatme.demo.domain.repository
+package com.barkatme.demo.domain.data.api
 
 import com.barkatme.demo.domain.model.placeholder.Comment
 import com.barkatme.demo.domain.model.placeholder.Post
 import com.barkatme.demo.domain.model.placeholder.Todo
 import kotlinx.coroutines.Deferred
 
-interface JPRepository {
+interface PlaceholderApi {
     suspend fun test(): Todo
 
     suspend fun getPosts(): List<Post>
