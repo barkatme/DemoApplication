@@ -6,7 +6,6 @@ plugins{
 
 dependencies {
     implementation(Libraries.kotlinStdLib)
-    implementation(project(path = ":data"))
     implementation(Libraries.koinKotlin)
     fuel()
 }

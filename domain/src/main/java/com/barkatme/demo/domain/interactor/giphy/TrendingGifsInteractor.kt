@@ -2,7 +2,7 @@
 // http://www.softeq.com
 package com.barkatme.demo.domain.interactor.giphy
 
-import com.barkatme.data.repository.giphy.GiphyRepository
+import com.barkatme.demo.domain.repository.GiphyRepository
 
 class TrendingGifsInteractor(private val repository: GiphyRepository) {
     suspend fun get(offset: Int? = null, limit: Int? = null, rating: String? = null) =

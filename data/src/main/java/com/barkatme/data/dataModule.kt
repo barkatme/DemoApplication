@@ -1,11 +1,13 @@
 package com.barkatme.data
 
-import com.barkatme.data.repository.flow.FlowRepository
+
 import com.barkatme.data.repository.flow.NetFlowRepository
-import com.barkatme.data.repository.giphy.GiphyRemoteRepository
-import com.barkatme.data.repository.giphy.GiphyRepository
-import com.barkatme.data.repository.jsonplaceholder.JPRepository
+import com.barkatme.data.repository.giphy.GiphyApiImpl
+import com.barkatme.data.repository.giphy.GiphyRepositoryImpl
 import com.barkatme.data.repository.jsonplaceholder.NetJPRepository
+import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.domain.repository.FlowRepository
+import com.barkatme.demo.domain.repository.JPRepository
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -25,12 +27,12 @@ val dataModule = module(override = true) {
 
     single<FlowRepository> { NetFlowRepository() }
 
-    single { GiphyRemoteRepository() }
-    single { GiphyRepository(get(), get()) }
+    single { GiphyApiImpl() }
+    single { GiphyRepositoryImpl(get(), get()) }
 }
 
 val startDataKoin = {
     startKoin {
-        modules(dataModule)
+        modules(domainModule, dataModule)
     }
 }

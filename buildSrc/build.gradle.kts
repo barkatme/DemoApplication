@@ -3,6 +3,7 @@ repositories {
 }
 
 plugins {
+    java
     `kotlin-dsl`
 }
 

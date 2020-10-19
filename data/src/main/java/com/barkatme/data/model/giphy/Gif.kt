@@ -12,3 +12,7 @@ data class Gif(
 )
 
 fun GifData.toGif() = Gif(id, title, images.original.url, images.preview.mp4)
+
+fun Gif.toDomainModel() = com.barkatme.demo.domain.model.giphy.Gif(id, title, url, previewUrl)
+
+fun com.barkatme.demo.domain.model.giphy.Gif.toDataModel() = Gif(id, title, url, previewUrl)

@@ -2,8 +2,11 @@
 // http://www.softeq.com
 package com.barkatme.data.repository.giphy
 
-import com.barkatme.data.model.giphy.remote.GiphyResponse
 import com.barkatme.data.model.giphy.remote.giphyResponseSerializer
+import com.barkatme.data.model.giphy.toDomainModel
+import com.barkatme.data.model.giphy.toGif
+import com.barkatme.demo.domain.api.GiphyApi
+import com.barkatme.demo.domain.model.giphy.Gif
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
@@ -12,7 +15,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 
-class GiphyRemoteRepository {
+class GiphyApiImpl : GiphyApi {
     companion object {
 
         class Ratings {
@@ -47,11 +50,11 @@ class GiphyRemoteRepository {
         API_KEY
     )
 
-    suspend fun trending(
-        offset: Int? = null,
-        limit: Int? = null,
-        rating: String? = null
-    ): GiphyResponse {
+    override suspend fun trending(
+        offset: Int?,
+        limit: Int?,
+        rating: String?
+    ): List<Gif> {
         return withContext(Dispatchers.IO) {
             val parameters = mutableListOf(apiKeyParameter)
             offset?.let { parameters.add(Pair(OFFSET_PARAMETER, it.toString())) }
@@ -61,15 +64,16 @@ class GiphyRemoteRepository {
                 .await(
                     kotlinxDeserializerOf(giphyResponseSerializer, json)
                 )
+                .data.map { it.toGif().toDomainModel() }
         }
     }
 
-    suspend fun search(
+    override suspend fun search(
         queue: String,
-        offset: Int? = null,
-        limit: Int? = null,
-        rating: String? = null
-    ): GiphyResponse = withContext(Dispatchers.IO) {
+        offset: Int?,
+        limit: Int?,
+        rating: String?
+    ): List<Gif> = withContext(Dispatchers.IO) {
         val parameters = mutableListOf(apiKeyParameter)
         parameters.add(Pair(QUEUE_PARAMETER, queue))
         offset?.let { parameters.add(Pair(OFFSET_PARAMETER, it.toString())) }
@@ -79,6 +83,7 @@ class GiphyRemoteRepository {
             .await(
                 kotlinxDeserializerOf(giphyResponseSerializer, json)
             )
+            .data.map { it.toGif().toDomainModel() }
     }
 
 }

@@ -5,7 +5,7 @@ package com.barkatme.demo.data.room.giphy
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.barkatme.data.model.giphy.Gif
+import com.barkatme.demo.domain.model.giphy.Gif
 
 @Entity(tableName = LocalGif.TABLE_NAME)
 data class LocalGif(

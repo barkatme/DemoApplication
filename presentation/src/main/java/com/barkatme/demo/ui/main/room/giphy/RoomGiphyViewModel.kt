@@ -6,9 +6,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.barkatme.data.model.giphy.Gif
 import com.barkatme.demo.domain.interactor.giphy.SearchGifsInteractor
 import com.barkatme.demo.domain.interactor.giphy.TrendingGifsInteractor
+import com.barkatme.demo.domain.model.giphy.Gif
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

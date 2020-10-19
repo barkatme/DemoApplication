@@ -2,7 +2,8 @@
 // http://www.softeq.com
 package com.barkatme.demo.domain.interactor.giphy
 
-import com.barkatme.data.repository.giphy.GiphyRepository
+import com.barkatme.demo.domain.repository.GiphyRepository
+
 
 class SearchGifsInteractor(private val repository: GiphyRepository) {
     suspend fun get(

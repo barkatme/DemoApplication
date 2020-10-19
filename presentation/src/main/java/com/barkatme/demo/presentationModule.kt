@@ -2,11 +2,10 @@ package com.barkatme.demo
 
 import android.app.Application
 import androidx.room.Room
-import com.barkatme.data.dataModule
-import com.barkatme.data.repository.giphy.GiphyLocalRepository
 import com.barkatme.demo.data.GiphyLocalRepositoryImpl
 import com.barkatme.demo.data.room.AppDatabase
 import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.domain.repository.GiphyLocalRepository
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
 import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel
@@ -59,7 +58,7 @@ val presentationModule = module {
 val startPresentationKoin = { application: Application ->
     startKoin {
         androidContext(application)
-        modules(dataModule, domainModule, presentationModule)
+        modules(domainModule, presentationModule)
         logger(AndroidLogger())
     }
 }

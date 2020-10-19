@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.barkatme.data.model.giphy.Gif
 import com.barkatme.demo.R
+import com.barkatme.demo.domain.model.giphy.Gif
 import com.barkatme.demo.ui.extensions.loadGif
 import com.barkatme.demo.ui.main.room.giphy.RoomGifsDiffCallback
 import kotlinx.android.synthetic.main.item_room_gif.view.*

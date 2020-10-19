@@ -1,8 +1,8 @@
-package com.barkatme.data.repository.jsonplaceholder
+package com.barkatme.demo.domain.repository
 
-import com.barkatme.data.model.placeholder.Comment
-import com.barkatme.data.model.placeholder.Post
-import com.barkatme.data.model.placeholder.Todo
+import com.barkatme.demo.domain.model.placeholder.Comment
+import com.barkatme.demo.domain.model.placeholder.Post
+import com.barkatme.demo.domain.model.placeholder.Todo
 import kotlinx.coroutines.Deferred
 
 interface JPRepository {

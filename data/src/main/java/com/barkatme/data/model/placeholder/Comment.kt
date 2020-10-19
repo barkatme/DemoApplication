@@ -15,3 +15,6 @@ data class Comment(
         val serializer = serializer()
     }
 }
+
+fun Comment.toDomainModel() =
+    com.barkatme.demo.domain.model.placeholder.Comment(body, email, id, name, postId)

@@ -1,8 +1,8 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.data.repository.giphy
+package com.barkatme.demo.domain.repository
 
-import com.barkatme.data.model.giphy.Gif
+import com.barkatme.demo.domain.model.giphy.Gif
 
 interface GiphyLocalRepository {
     suspend fun getAll(): List<Gif>

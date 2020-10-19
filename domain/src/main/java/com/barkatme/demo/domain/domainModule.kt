@@ -1,6 +1,5 @@
 package com.barkatme.demo.domain
 
-import com.barkatme.data.dataModule
 import com.barkatme.demo.domain.interactor.flow.TestFlowInteractor
 import com.barkatme.demo.domain.interactor.giphy.SearchGifsInteractor
 import com.barkatme.demo.domain.interactor.giphy.TrendingGifsInteractor
@@ -15,6 +14,6 @@ val domainModule = module {
 
 val startDomainKoin = {
     startKoin {
-        modules(dataModule, domainModule)
+        modules(domainModule)
     }
 }

@@ -14,3 +14,5 @@ data class Post(
         val serializer = serializer()
     }
 }
+
+fun Post.toDomainModel() = com.barkatme.demo.domain.model.placeholder.Post(body, id, title, userId)
