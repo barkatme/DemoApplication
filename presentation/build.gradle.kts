@@ -48,6 +48,7 @@ android {
 
 dependencies {
 
+    implementation(project(path = ":data"))
     implementation(project(path = ":domain"))
 
     implementation(Libraries.kotlinStdLib)

@@ -5,8 +5,10 @@ import com.barkatme.data.repository.flow.NetFlowRepository
 import com.barkatme.data.repository.giphy.GiphyApiImpl
 import com.barkatme.data.repository.giphy.GiphyRepositoryImpl
 import com.barkatme.data.repository.jsonplaceholder.NetJPRepository
+import com.barkatme.demo.domain.api.GiphyApi
 import com.barkatme.demo.domain.domainModule
 import com.barkatme.demo.domain.repository.FlowRepository
+import com.barkatme.demo.domain.repository.GiphyRepository
 import com.barkatme.demo.domain.repository.JPRepository
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -27,8 +29,8 @@ val dataModule = module(override = true) {
 
     single<FlowRepository> { NetFlowRepository() }
 
-    single { GiphyApiImpl() }
-    single { GiphyRepositoryImpl(get(), get()) }
+    single<GiphyApi> { GiphyApiImpl() }
+    single<GiphyRepository> { GiphyRepositoryImpl(get(), get()) }
 }
 
 val startDataKoin = {

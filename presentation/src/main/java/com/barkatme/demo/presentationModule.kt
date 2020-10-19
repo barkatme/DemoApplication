@@ -2,6 +2,7 @@ package com.barkatme.demo
 
 import android.app.Application
 import androidx.room.Room
+import com.barkatme.data.dataModule
 import com.barkatme.demo.data.GiphyLocalRepositoryImpl
 import com.barkatme.demo.data.room.AppDatabase
 import com.barkatme.demo.domain.domainModule
@@ -58,7 +59,7 @@ val presentationModule = module {
 val startPresentationKoin = { application: Application ->
     startKoin {
         androidContext(application)
-        modules(domainModule, presentationModule)
+        modules(dataModule, domainModule, presentationModule)
         logger(AndroidLogger())
     }
 }
