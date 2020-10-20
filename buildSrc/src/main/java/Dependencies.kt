@@ -43,6 +43,9 @@ object Libraries {
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"
 
+    // Koin for Tests
+    private const val koinTest = "org.koin:koin-test:${Versions.koin}"
+
     // Koin for Android
     private const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
 
@@ -72,6 +75,7 @@ object Libraries {
         implementation(koinAndroidx)
         implementation(koinViewModel)
         implementation(koinFragment)
+        testImplementation(koinTest)
     }
 
     fun DependencyHandler.androidXCamera(version: String = Versions.cameraX) {
@@ -109,9 +113,13 @@ object TestLibraries {
         const val junit4 = "4.12"
         const val testRunner = "1.1.0-alpha4"
         const val espresso = "3.1.0-alpha4"
+        const val mockito = "1.10.19"
+        const val androidxTest = "1.0.0"
     }
 
     const val junit4 = "junit:junit:${Versions.junit4}"
     const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val androidxTest = "androidx.test:core:${Versions.androidxTest}"
 }

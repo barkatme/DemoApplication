@@ -59,4 +59,6 @@ dependencies {
     fuel()
     room()
     implementation(Libraries.androidxPaging)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.androidxTest)
 }
