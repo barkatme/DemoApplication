@@ -19,7 +19,7 @@ class GiphyRepositoryImpl(
         offset: Int?,
         limit: Int?,
         rating: String?
-    ) = withContext(Dispatchers.IO) {
+    ): List<Gif> = withContext(Dispatchers.IO) {
         var gifs: List<Gif>
         try {
             gifs = api.trending(offset, limit, rating)
@@ -35,7 +35,7 @@ class GiphyRepositoryImpl(
         offset: Int?,
         limit: Int?,
         rating: String?
-    ) = withContext(Dispatchers.IO) {
+    ): List<Gif> = withContext(Dispatchers.IO) {
         var gifs: List<Gif>
         try {
             gifs = api.search(queue, offset, limit, rating)
