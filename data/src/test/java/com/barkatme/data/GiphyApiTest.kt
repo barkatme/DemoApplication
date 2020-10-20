@@ -10,13 +10,12 @@ import org.koin.test.inject
 
 class GiphyApiTest : BaseTest {
 
-    private val giphyApi: GiphyApi by inject()
+    private val api: GiphyApi by inject()
 
     @Test
     fun testTrending() {
         runBlocking {
-            val response = giphyApi.trending()
-            response.forEach { println(it.title) }
+            val response = api.trending()
             assert(response.isNotEmpty()) { "response on giphy trending is empty" }
         }
     }
@@ -24,8 +23,7 @@ class GiphyApiTest : BaseTest {
     @Test
     fun testSearch() {
         runBlocking {
-            val response = giphyApi.search("search")
-            response.forEach { println(it.title) }
+            val response = api.search("search")
             assert(response.isNotEmpty()) { "response on giphy search is empty" }
         }
     }

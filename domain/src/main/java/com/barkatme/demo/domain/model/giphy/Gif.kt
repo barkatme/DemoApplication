@@ -4,7 +4,7 @@ package com.barkatme.demo.domain.model.giphy
 
 data class Gif(
     val id: String,
-    val title: String? = null,
-    val url: String? = null,
-    val previewUrl: String? = null
+    val title: String = "",
+    val url: String = "",
+    val previewUrl: String = ""
 )

@@ -29,5 +29,7 @@ data class LocalGif(
 }
 
 fun LocalGif.toDataGif() = Gif(id, title, url, previewUrl)
-fun LocalGif.toDomainGif() = com.barkatme.demo.domain.model.giphy.Gif(id, title, url, previewUrl)
+fun LocalGif.toDomainGif() =
+    com.barkatme.demo.domain.model.giphy.Gif(id, title ?: "", url ?: "", previewUrl ?: "")
+
 fun Gif.toLocalGif() = LocalGif(id, title, url, previewUrl)
