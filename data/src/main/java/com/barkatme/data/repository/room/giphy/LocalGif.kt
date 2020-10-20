@@ -1,11 +1,11 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.data.room.giphy
+package com.barkatme.data.repository.room.giphy
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.barkatme.demo.domain.model.giphy.Gif
+import com.barkatme.data.model.giphy.Gif
 
 @Entity(tableName = LocalGif.TABLE_NAME)
 data class LocalGif(
@@ -28,5 +28,6 @@ data class LocalGif(
     }
 }
 
-fun LocalGif.toGif() = Gif(id, title, url, previewUrl)
+fun LocalGif.toDataGif() = Gif(id, title, url, previewUrl)
+fun LocalGif.toDomainGif() = com.barkatme.demo.domain.model.giphy.Gif(id, title, url, previewUrl)
 fun Gif.toLocalGif() = LocalGif(id, title, url, previewUrl)

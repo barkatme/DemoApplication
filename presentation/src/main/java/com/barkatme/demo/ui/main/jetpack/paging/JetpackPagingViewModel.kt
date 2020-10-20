@@ -8,12 +8,11 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.barkatme.data.room.giphy.GifDao
-import com.barkatme.data.room.giphy.toGif
+import com.barkatme.data.repository.GiphyLocalPagedRepository
 import com.barkatme.demo.domain.model.giphy.Gif
 
 class JetpackPagingViewModel(
-    private val gifDao: GifDao
+    private val giphyLocalPagedRepository: GiphyLocalPagedRepository
 ) : ViewModel() {
 
     companion object {
@@ -25,18 +24,21 @@ class JetpackPagingViewModel(
     var filterTextAll = MutableLiveData<String>()
 
     init {
+
+        val config = PagedList.Config.Builder()
+            .setPageSize(PAGE_SIZE)
+            .setPrefetchDistance(PREFETCH_DISTANCE)
+            .build()
+
         gifAllList = Transformations.switchMap<String, PagedList<Gif>>(filterTextAll)
         { input: String ->
-            LivePagedListBuilder<Int, Gif>(
-                if (input == "" || input == "%%") {
-                    gifDao.loadAllGifs()
-                } else {
-                    gifDao.loadAllGifsByTitle(input)
-                }.map { it.toGif() }, PagedList.Config.Builder()
-                    .setPageSize(PAGE_SIZE)
-                    .setPrefetchDistance(PREFETCH_DISTANCE)
-                    .build()
-            ).build()
+            val dataSourceFactory = if (input == "" || input == "%%") {
+                giphyLocalPagedRepository.loadAllGifs()
+            } else {
+                giphyLocalPagedRepository.loadAllGifsByTitle(input)
+            }
+
+            LivePagedListBuilder<Int, Gif>(dataSourceFactory, config).build()
         }
     }
 }

@@ -6,9 +6,10 @@ import androidx.room.Room
 import com.barkatme.data.api.giphy.GiphyApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderFlowApiImpl
+import com.barkatme.data.repository.GiphyLocalPagedRepository
 import com.barkatme.data.repository.GiphyLocalRepositoryImpl
 import com.barkatme.data.repository.GiphyRepositoryImpl
-import com.barkatme.data.room.AppDatabase
+import com.barkatme.data.repository.room.AppDatabase
 import com.barkatme.demo.domain.data.api.GiphyApi
 import com.barkatme.demo.domain.data.api.PlaceholderApi
 import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
@@ -50,6 +51,8 @@ val dataModule = module(override = true) {
     single<GiphyRepository> { GiphyRepositoryImpl(get(), get()) }
 
     single<GiphyLocalRepository> { GiphyLocalRepositoryImpl(get()) }
+
+    single<GiphyLocalPagedRepository> { GiphyLocalPagedRepository(get()) }
 }
 
 val startDataKoin = { application: Application ->
