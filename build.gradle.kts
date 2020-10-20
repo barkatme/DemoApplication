@@ -6,11 +6,12 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath (BuildPlugins.androidGradlePlugin)
-        classpath (BuildPlugins.kotlinGradlePlugin)
-        classpath (BuildPlugins.kotlinSerializationPlugin)
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath(BuildPlugins.androidGradlePlugin)
+        classpath(BuildPlugins.kotlinGradlePlugin)
+        classpath(BuildPlugins.kotlinSerializationPlugin)
+        classpath(BuildPlugins.googleServices)
+        classpath(BuildPlugins.firebaseCrashlyticsClasspath)
+        classpath(BuildPlugins.firebasePerformanceClasspath)
     }
 }
 

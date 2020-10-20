@@ -7,9 +7,11 @@ import com.barkatme.data.model.giphy.toDomainModel
 import com.barkatme.data.model.giphy.toGif
 import com.barkatme.demo.domain.data.api.GiphyApi
 import com.barkatme.demo.domain.model.giphy.Gif
+import com.github.kittinunf.fuel.core.Request
 import com.github.kittinunf.fuel.core.await
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.serialization.kotlinxDeserializerOf
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -50,6 +52,8 @@ class GiphyApiImpl : GiphyApi {
         API_KEY
     )
 
+    val crashlytics = FirebaseCrashlytics.getInstance()
+
     override suspend fun trending(
         offset: Int?,
         limit: Int?,
@@ -61,11 +65,21 @@ class GiphyApiImpl : GiphyApi {
             limit?.let { parameters.add(Pair(LIMIT_PARAMETER, it.toString())) }
             rating?.let { parameters.add(Pair(RATING_PARAMETER, it)) }
             "${BASE_URL}trending".httpGet(parameters)
+                .log()
                 .await(
                     kotlinxDeserializerOf(giphyResponseSerializer, json)
                 )
                 .data.map { it.toGif().toDomainModel() }
         }
+    }
+
+    private fun Request.log(): Request {
+        crashlytics.log(response().first.toString())
+        response().second.toString().split("Body : ").let {
+            crashlytics.log(it[0])
+            crashlytics.log(it[1])
+        }
+        return this
     }
 
     override suspend fun search(
@@ -80,6 +94,7 @@ class GiphyApiImpl : GiphyApi {
         limit?.let { parameters.add(Pair(LIMIT_PARAMETER, it.toString())) }
         rating?.let { parameters.add(Pair(RATING_PARAMETER, it)) }
         "${BASE_URL}search".httpGet(parameters)
+            .log()
             .await(
                 kotlinxDeserializerOf(giphyResponseSerializer, json)
             )

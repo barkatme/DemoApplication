@@ -5,6 +5,9 @@ import Libraries.koinAndroid
 
 plugins {
     id(BuildPlugins.androidApplication)
+    id(BuildPlugins.googleServicesPlugin)
+    id(BuildPlugins.firebaseCrashlytics)
+    id(BuildPlugins.firebasePerformance)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
@@ -20,7 +23,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     defaultConfig {
-        applicationId = null
+        applicationId = "com.barkatme.demo"
         minSdkVersion(AndroidSdk.min)
         targetSdkVersion(AndroidSdk.target)
         versionCode = 1
@@ -52,6 +55,11 @@ dependencies {
 
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)
+
+    implementation(platform(Libraries.firebaseBom))
+    implementation(Libraries.firebaseAnalytics)
+    implementation(Libraries.firebaseCrashlytics)
+    implementation(Libraries.firebasePerformance)
 
     koinAndroid()
     fuel()

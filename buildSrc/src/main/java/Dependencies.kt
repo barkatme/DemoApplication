@@ -20,7 +20,13 @@ object Libraries {
         const val glide = "4.11.0"
         const val cameraX = "1.0.0-beta08"
         const val paging = "2.1.2"
+        const val firebaseBom = "25.12.0"
     }
+
+    const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
+    const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+    const val firebasePerformance = "com.google.firebase:firebase-perf-ktx"
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.jetpack}"

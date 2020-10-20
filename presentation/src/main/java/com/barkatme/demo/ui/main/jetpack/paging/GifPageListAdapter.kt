@@ -29,7 +29,7 @@ class GifPageListAdapter :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(gif: Gif) {
             itemView.tvGifTitle.text = gif.title
-            gif.url?.let { itemView.imgImage.loadGif(it, gif.previewUrl) }
+            gif.url.let { itemView.imgImage.loadGif(it, gif.previewUrl) }
         }
     }
 }

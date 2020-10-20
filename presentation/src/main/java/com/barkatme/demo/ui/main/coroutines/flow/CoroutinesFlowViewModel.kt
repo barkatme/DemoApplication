@@ -2,14 +2,15 @@ package com.barkatme.demo.ui.main.coroutines.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.barkatme.demo.domain.interactor.flow.TestFlowInteractor
+import com.barkatme.demo.domain.interactor.flow.GetTodoFlowInteractor
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class CoroutinesFlowViewModel(private val testFlowInteractor: TestFlowInteractor) : ViewModel(),
+class CoroutinesFlowViewModel(private val getTodoFlowInteractor: GetTodoFlowInteractor) :
+    ViewModel(),
     CoroutineScope {
 
     companion object {
@@ -33,7 +34,7 @@ class CoroutinesFlowViewModel(private val testFlowInteractor: TestFlowInteractor
             var result = ""
             val from = todoFrom.value?.toInt() ?: 1
             val to = todoTo.value?.toInt() ?: 1
-            testFlowInteractor.getTodo(from, to)
+            getTodoFlowInteractor.getTodo(from, to)
                 .onStart { output.value = "loading..." }
                     //if we don't use catch, the exceptionHandler will get this throwable
                     //but this flow will stop

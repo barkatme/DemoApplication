@@ -7,6 +7,7 @@ import org.koin.android.ext.android.inject
 
 @FlowPreview
 @ExperimentalCoroutinesApi
+@Suppress("unused")
 class DemoApplication : Application() {
 
     companion object {
@@ -17,6 +18,7 @@ class DemoApplication : Application() {
         super.onCreate()
         startPresentationKoin(this@DemoApplication)
         startCounter()
+//        throw IOException("test exception")
     }
 
     private fun startCounter() {

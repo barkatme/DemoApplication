@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "774927940447",
+    "firebase_url": "https://barkatme-demo.firebaseio.com",
+    "project_id": "barkatme-demo",
+    "storage_bucket": "barkatme-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774927940447:android:4b834faec1263154fbd4ea",
+        "android_client_info": {
+          "package_name": "com.barkatme.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774927940447-tbt88d5t24stvjv4qinpc0mqg3dh1v8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUmjinwzgagGVrZjpb0NnsmuU5breArHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774927940447-tbt88d5t24stvjv4qinpc0mqg3dh1v8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

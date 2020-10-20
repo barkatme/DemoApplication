@@ -18,5 +18,5 @@ class GiphyLocalRepositoryImpl(private val gifDao: GifDao) : GiphyLocalRepositor
     }
 
     override suspend fun search(queue: String): List<Gif> =
-        getAll().filter { it.title?.contains(queue, true) ?: false }
+        getAll().filter { it.title.contains(queue, true) }
 }
