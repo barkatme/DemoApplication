@@ -4,11 +4,9 @@ package com.barkatme.data
 import com.barkatme.data.api.giphy.GiphyApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderFlowApiImpl
-import com.barkatme.data.repository.giphy.GiphyRepositoryImpl
 import com.barkatme.demo.domain.data.api.GiphyApi
 import com.barkatme.demo.domain.data.api.PlaceholderApi
 import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
-import com.barkatme.demo.domain.data.repository.GiphyRepository
 import com.barkatme.demo.domain.domainModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -30,7 +28,6 @@ val dataModule = module(override = true) {
     single<PlaceholderFlowApi> { PlaceholderFlowApiImpl() }
 
     single<GiphyApi> { GiphyApiImpl() }
-    single<GiphyRepository> { GiphyRepositoryImpl(get(), get()) }
 }
 
 val startDataKoin = {
