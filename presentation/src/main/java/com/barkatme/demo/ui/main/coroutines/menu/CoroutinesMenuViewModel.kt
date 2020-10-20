@@ -1,27 +1,20 @@
 package com.barkatme.demo.ui.main.coroutines.menu
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.barkatme.demo.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
-class CoroutinesMenuViewModel : ViewModel(), CoroutineScope {
+class CoroutinesMenuViewModel : ViewModel() {
 
     val channel = Channel<Int>()
 
     val flowAction = R.id.action_menuFragment_to_flowFragment
     val channelAction = R.id.action_menuFragment_to_channelsFragment
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
-    private val job = Job()
-
     fun navigate(id: Int) {
-        launch {
+        viewModelScope.launch {
             channel.send(id)
         }
     }
