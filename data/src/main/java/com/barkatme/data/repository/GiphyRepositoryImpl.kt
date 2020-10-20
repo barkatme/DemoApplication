@@ -1,8 +1,10 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.domain.data.repository
+package com.barkatme.data.repository
 
 import com.barkatme.demo.domain.data.api.GiphyApi
+import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
+import com.barkatme.demo.domain.data.repository.GiphyRepository
 import com.barkatme.demo.domain.model.giphy.Gif
 import com.github.kittinunf.fuel.core.FuelError
 import kotlinx.coroutines.Dispatchers

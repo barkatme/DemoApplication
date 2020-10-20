@@ -2,7 +2,6 @@ import Libraries.androidXCamera
 import Libraries.fuel
 import Libraries.glide
 import Libraries.koinAndroid
-import Libraries.room
 
 plugins {
     id(BuildPlugins.androidApplication)
@@ -35,10 +34,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "DATABASE_NAME", "\"DemoApplicationDatabase\"")
-        }
-        getByName("debug") {
-            buildConfigField("String", "DATABASE_NAME", "\"DemoApplicationDebugDatabase\"")
         }
     }
     buildFeatures {
@@ -62,10 +57,17 @@ dependencies {
     fuel()
     glide()
 
-    //Jetpack
-    room()
+    androidxDependencies()
+
+    testImplementation(TestLibraries.junit4)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
+}
+
+
+fun DependencyHandlerScope.androidxDependencies() {
     androidXCamera()
-    implementation(Libraries.paging)
+    implementation(Libraries.androidxPaging)
     implementation(Libraries.androidxViewModel)
     implementation(Libraries.androidxLiveData)
     implementation(Libraries.androidxLifecycleExtensions)
@@ -75,8 +77,4 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.recyclerView)
     implementation(Libraries.recyclerViewSelection)
-
-    testImplementation(TestLibraries.junit4)
-    androidTestImplementation(TestLibraries.testRunner)
-    androidTestImplementation(TestLibraries.espresso)
 }

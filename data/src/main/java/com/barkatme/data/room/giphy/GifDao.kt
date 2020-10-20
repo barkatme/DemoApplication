@@ -1,6 +1,6 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.data.room.giphy
+package com.barkatme.data.room.giphy
 
 import androidx.paging.DataSource
 import androidx.room.*

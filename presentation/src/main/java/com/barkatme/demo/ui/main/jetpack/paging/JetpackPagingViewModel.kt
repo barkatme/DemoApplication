@@ -8,8 +8,8 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.barkatme.demo.data.room.giphy.GifDao
-import com.barkatme.demo.data.room.giphy.toGif
+import com.barkatme.data.room.giphy.GifDao
+import com.barkatme.data.room.giphy.toGif
 import com.barkatme.demo.domain.model.giphy.Gif
 
 class JetpackPagingViewModel(

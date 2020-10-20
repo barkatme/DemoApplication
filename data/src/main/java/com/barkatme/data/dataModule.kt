@@ -1,13 +1,21 @@
 package com.barkatme.data
 
 
+import android.app.Application
+import androidx.room.Room
 import com.barkatme.data.api.giphy.GiphyApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderFlowApiImpl
+import com.barkatme.data.repository.GiphyLocalRepositoryImpl
+import com.barkatme.data.repository.GiphyRepositoryImpl
+import com.barkatme.data.room.AppDatabase
 import com.barkatme.demo.domain.data.api.GiphyApi
 import com.barkatme.demo.domain.data.api.PlaceholderApi
 import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
+import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
+import com.barkatme.demo.domain.data.repository.GiphyRepository
 import com.barkatme.demo.domain.domainModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -28,10 +36,25 @@ val dataModule = module(override = true) {
     single<PlaceholderFlowApi> { PlaceholderFlowApiImpl() }
 
     single<GiphyApi> { GiphyApiImpl() }
+
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            AppDatabase::class.java,
+            BuildConfig.DATABASE_NAME
+        ).build()
+    }
+
+    single { get<AppDatabase>().gifDao() }
+
+    single<GiphyRepository> { GiphyRepositoryImpl(get(), get()) }
+
+    single<GiphyLocalRepository> { GiphyLocalRepositoryImpl(get()) }
 }
 
-val startDataKoin = {
+val startDataKoin = { application: Application ->
     startKoin {
+        androidContext(application)
         modules(domainModule, dataModule)
     }
 }

@@ -38,7 +38,7 @@ object Libraries {
     private const val fuelPrefix = "com.github.kittinunf.fuel"
 
     private const val androidXCameraPrefix = "androidx.camera"
-    const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    const val androidxPaging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
     // Koin for Kotlin
     const val koinKotlin = "org.koin:koin-core:${Versions.koin}"

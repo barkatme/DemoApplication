@@ -1,10 +1,10 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.data
+package com.barkatme.data.repository
 
-import com.barkatme.demo.data.room.giphy.GifDao
-import com.barkatme.demo.data.room.giphy.toGif
-import com.barkatme.demo.data.room.giphy.toLocalGif
+import com.barkatme.data.room.giphy.GifDao
+import com.barkatme.data.room.giphy.toGif
+import com.barkatme.data.room.giphy.toLocalGif
 import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
 import com.barkatme.demo.domain.model.giphy.Gif
 

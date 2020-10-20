@@ -1,4 +1,6 @@
 import Libraries.fuel
+import Libraries.koinAndroid
+import Libraries.room
 
 repositories {
     jcenter()
@@ -7,6 +9,8 @@ repositories {
 plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
+    id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.serialization)
 }
 
@@ -51,6 +55,8 @@ dependencies {
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.coroutines)
     implementation(Libraries.kotlinxSerialization)
-    implementation(Libraries.koinKotlin)
+    koinAndroid()
     fuel()
+    room()
+    implementation(Libraries.androidxPaging)
 }
