@@ -1,4 +1,4 @@
-package com.barkatme.demo.domain.data.api
+package com.barkatme.demo.domain.api
 
 
 import com.barkatme.demo.domain.model.placeholder.Comment

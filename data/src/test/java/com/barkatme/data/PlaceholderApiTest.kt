@@ -2,8 +2,8 @@
 // http://www.softeq.com
 package com.barkatme.data
 
-import com.barkatme.demo.domain.data.api.PlaceholderApi
-import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
+import com.barkatme.demo.domain.api.PlaceholderApi
+import com.barkatme.demo.domain.api.PlaceholderFlowApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking

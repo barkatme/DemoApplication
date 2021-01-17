@@ -2,8 +2,6 @@
 // http://www.softeq.com
 package com.barkatme.demo.ui.base
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 
-abstract class BaseActivity : AppCompatActivity() {
-
-}
+abstract class BaseActivity : Activity()

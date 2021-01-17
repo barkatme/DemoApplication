@@ -81,6 +81,7 @@ fun DependencyHandlerScope.androidxDependencies() {
     implementation(Libraries.androidxLifecycleExtensions)
     implementation(Libraries.androidxNavigationFragment)
     implementation(Libraries.androidxNavigationUi)
+    implementation(Libraries.androidxNavigationCompose)
     implementation(Libraries.appCompat)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.recyclerView)

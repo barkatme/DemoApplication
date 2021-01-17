@@ -3,7 +3,7 @@
 package com.barkatme.data
 
 
-import com.barkatme.demo.domain.data.api.GiphyApi
+import com.barkatme.demo.domain.api.GiphyApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.koin.test.inject

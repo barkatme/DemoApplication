@@ -6,8 +6,8 @@ import com.barkatme.data.model.giphy.toDataModel
 import com.barkatme.data.repository.room.giphy.GifDao
 import com.barkatme.data.repository.room.giphy.toDomainGif
 import com.barkatme.data.repository.room.giphy.toLocalGif
-import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
 import com.barkatme.demo.domain.model.giphy.Gif
+import com.barkatme.demo.domain.repository.GiphyLocalRepository
 
 class GiphyLocalRepositoryImpl(private val gifDao: GifDao) : GiphyLocalRepository {
     override suspend fun getAll(): List<Gif> =

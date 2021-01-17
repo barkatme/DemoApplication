@@ -1,7 +1,7 @@
 package com.barkatme.data.api.placeholder
 
 import com.barkatme.data.model.placeholder.toDomainModel
-import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
+import com.barkatme.demo.domain.api.PlaceholderFlowApi
 import com.barkatme.demo.domain.model.placeholder.Comment
 import com.barkatme.demo.domain.model.placeholder.Post
 import com.barkatme.demo.domain.model.placeholder.Todo

@@ -1,26 +1,26 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-const val kotlinVersion = "1.3.72"
+const val kotlinVersion = "1.4.21"
 
 object Libraries {
     private object Versions {
-        const val navigation = "2.3.0"
+        const val navigation = "2.3.2"
         const val jetpack = "1.2.0"
-        const val constraintLayout = "1.1.3"
+        const val constraintLayout = "2.0.4"
         const val ktx = "1.3.1"
         const val ktxFragment = "1.2.5"
-        const val coroutines = "1.3.9"
-        const val fuel = "2.2.3"
-        const val serialization = "0.20.0"
+        const val coroutines = "1.4.2"
+        const val fuel = "2.3.1"
+        const val serialization = "1.0.1"
         const val lifecycle = "2.2.0"
-        const val koin = "2.1.6"
+        const val koin = "2.2.2"
         const val recyclerview = "1.1.0"
-        const val recyclerViewSelection = "1.1.0-rc01"
-        const val room = "2.2.5"
+        const val recyclerViewSelection = "1.0.0"
+        const val room = "2.2.6"
         const val glide = "4.11.0"
         const val cameraX = "1.0.0-beta08"
         const val paging = "2.1.2"
-        const val firebaseBom = "25.12.0"
+        const val firebaseBom = "26.3.0"
     }
 
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
@@ -37,7 +37,7 @@ object Libraries {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
             Versions.coroutines
-    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:" +
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:" +
             Versions.serialization
 
 
@@ -71,6 +71,8 @@ object Libraries {
     const val androidxNavigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    // Jetpack Compose Integration
+    const val androidxNavigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha05"
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:" +
@@ -92,8 +94,8 @@ object Libraries {
         ).forEach {
             implementation("$androidXCameraPrefix:$it:$version")
         }
-        implementation("$androidXCameraPrefix:camera-view:1.0.0-alpha15")
-        implementation("$androidXCameraPrefix:camera-extensions:1.0.0-alpha15")
+        implementation("$androidXCameraPrefix:camera-view:1.0.0-alpha20")
+        implementation("$androidXCameraPrefix:camera-extensions:1.0.0-alpha20")
     }
 
     fun DependencyHandler.fuel(version: String = Versions.fuel) {

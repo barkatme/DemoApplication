@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/coroutines">
+    app:startDestination="@id/coroutinesGraph">
 
     <navigation
-        android:id="@+id/coroutines"
+        android:id="@+id/coroutinesGraph"
         app:startDestination="@id/coroutines">
         <fragment
             android:id="@+id/flowFragment"
@@ -33,7 +33,7 @@
     </navigation>
 
     <navigation
-        android:id="@+id/jetpack"
+        android:id="@+id/jetpackGraph"
         app:startDestination="@id/jetpack">
         <fragment
             android:id="@+id/jetpack"
@@ -61,7 +61,7 @@
 
 
     <navigation
-        android:id="@+id/room"
+        android:id="@+id/roomGraph"
         app:startDestination="@id/room">
         <fragment
             android:id="@+id/room"

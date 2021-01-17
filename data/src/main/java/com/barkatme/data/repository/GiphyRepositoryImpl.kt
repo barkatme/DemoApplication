@@ -2,10 +2,10 @@
 // http://www.softeq.com
 package com.barkatme.data.repository
 
-import com.barkatme.demo.domain.data.api.GiphyApi
-import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
-import com.barkatme.demo.domain.data.repository.GiphyRepository
+import com.barkatme.demo.domain.api.GiphyApi
 import com.barkatme.demo.domain.model.giphy.Gif
+import com.barkatme.demo.domain.repository.GiphyLocalRepository
+import com.barkatme.demo.domain.repository.GiphyRepository
 import com.github.kittinunf.fuel.core.FuelError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

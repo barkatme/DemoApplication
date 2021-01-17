@@ -5,7 +5,7 @@ package com.barkatme.data.api.giphy
 import com.barkatme.data.model.giphy.remote.giphyResponseSerializer
 import com.barkatme.data.model.giphy.toDomainModel
 import com.barkatme.data.model.giphy.toGif
-import com.barkatme.demo.domain.data.api.GiphyApi
+import com.barkatme.demo.domain.api.GiphyApi
 import com.barkatme.demo.domain.model.giphy.Gif
 import com.github.kittinunf.fuel.core.Request
 import com.github.kittinunf.fuel.core.await
@@ -15,7 +15,6 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 
 class GiphyApiImpl : GiphyApi {
     companion object {
@@ -45,7 +44,10 @@ class GiphyApiImpl : GiphyApi {
     }
 
     @Suppress("EXPERIMENTAL_API_USAGE")
-    private val json = Json(JsonConfiguration(ignoreUnknownKeys = true))
+    private val json = Json {
+        ignoreUnknownKeys = false
+        prettyPrint = true
+    }
 
     private val apiKeyParameter = Pair(
         API_KEY_PARAMETER,

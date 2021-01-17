@@ -61,7 +61,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         cameraExecutor = Executors.newSingleThreadExecutor()
         displayManager.registerDisplayListener(displayListener, null)
         val binding =
@@ -78,7 +78,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
     private fun setUpCamera() {
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-        cameraProviderFuture.addListener(Runnable {
+        cameraProviderFuture.addListener({
             cameraProvider = cameraProviderFuture.get()
             lensFacing = when {
                 hasBackCamera() -> CameraSelector.LENS_FACING_BACK
@@ -106,7 +106,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
             camera = cameraProvider.bindToLifecycle(
                 this, cameraSelector, preview, imageCapture, imageAnalysis
             )
-            preview?.setSurfaceProvider(viewFinder.createSurfaceProvider())
+            preview?.setSurfaceProvider(viewFinder.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }

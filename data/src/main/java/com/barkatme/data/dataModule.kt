@@ -10,12 +10,12 @@ import com.barkatme.data.repository.GiphyLocalPagedRepository
 import com.barkatme.data.repository.GiphyLocalRepositoryImpl
 import com.barkatme.data.repository.GiphyRepositoryImpl
 import com.barkatme.data.repository.room.AppDatabase
-import com.barkatme.demo.domain.data.api.GiphyApi
-import com.barkatme.demo.domain.data.api.PlaceholderApi
-import com.barkatme.demo.domain.data.api.PlaceholderFlowApi
-import com.barkatme.demo.domain.data.repository.GiphyLocalRepository
-import com.barkatme.demo.domain.data.repository.GiphyRepository
+import com.barkatme.demo.domain.api.GiphyApi
+import com.barkatme.demo.domain.api.PlaceholderApi
+import com.barkatme.demo.domain.api.PlaceholderFlowApi
 import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.domain.repository.GiphyLocalRepository
+import com.barkatme.demo.domain.repository.GiphyRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
