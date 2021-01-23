@@ -6,17 +6,17 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.barkatme.demo.domain.interactor.giphy.SearchGifsInteractor
-import com.barkatme.demo.domain.interactor.giphy.TrendingGifsInteractor
 import com.barkatme.demo.domain.model.giphy.Gif
+import com.barkatme.demo.domain.usecase.giphy.SearchGifsUseCase
+import com.barkatme.demo.domain.usecase.giphy.TrendingGifsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 
 class RoomGiphyViewModel(
-    private val trendingGifsInteractor: TrendingGifsInteractor,
-    private val searchGifsInteractor: SearchGifsInteractor
+    private val trendingGifsUseCase: TrendingGifsUseCase,
+    private val searchGifsUseCase: SearchGifsUseCase
 ) : ViewModel() {
 
     companion object {
@@ -36,9 +36,9 @@ class RoomGiphyViewModel(
                 flow {
                     emit(
                         if (queue.isNotBlank()) {
-                            searchGifsInteractor.get(queue)
+                            searchGifsUseCase.get(queue)
                         } else {
-                            trendingGifsInteractor.get()
+                            trendingGifsUseCase.get()
                         }
                     )
                 }

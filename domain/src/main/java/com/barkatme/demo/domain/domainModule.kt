@@ -1,15 +1,25 @@
 package com.barkatme.demo.domain
 
-import com.barkatme.demo.domain.interactor.flow.GetTodoFlowInteractor
-import com.barkatme.demo.domain.interactor.giphy.SearchGifsInteractor
-import com.barkatme.demo.domain.interactor.giphy.TrendingGifsInteractor
+import com.barkatme.demo.domain.usecase.demo.auth.SignInUseCase
+import com.barkatme.demo.domain.usecase.demo.auth.SignOutUseCase
+import com.barkatme.demo.domain.usecase.demo.auth.SignUpUseCase
+import com.barkatme.demo.domain.usecase.demo.user.GetCurrentUserUseCase
+import com.barkatme.demo.domain.usecase.flow.GetTodoFlowUseCase
+import com.barkatme.demo.domain.usecase.giphy.SearchGifsUseCase
+import com.barkatme.demo.domain.usecase.giphy.TrendingGifsUseCase
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 val domainModule = module {
-    single { GetTodoFlowInteractor(get()) }
-    single { TrendingGifsInteractor(get()) }
-    single { SearchGifsInteractor(get()) }
+
+    single { SignInUseCase(get(), get()) }
+    single { SignUpUseCase(get(), get()) }
+    single { SignOutUseCase(get(), get()) }
+    single { GetCurrentUserUseCase(get(), get()) }
+
+    single { GetTodoFlowUseCase(get()) }
+    single { TrendingGifsUseCase(get()) }
+    single { SearchGifsUseCase(get()) }
 }
 
 val startDomainKoin = {

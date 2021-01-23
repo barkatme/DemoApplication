@@ -1,11 +1,11 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.demo.domain.interactor.giphy
+package com.barkatme.demo.domain.usecase.giphy
 
-import com.barkatme.demo.domain.repository.GiphyRepository
+import com.barkatme.demo.domain.repository.giphy.GiphyRepository
 
 
-class SearchGifsInteractor(private val repository: GiphyRepository) {
+class SearchGifsUseCase(private val repository: GiphyRepository) {
     suspend fun get(
         queue: String,
         offset: Int? = null,

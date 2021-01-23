@@ -3,6 +3,7 @@ package com.barkatme.demo
 import android.app.Application
 import com.barkatme.data.dataModule
 import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.ui.main.auth.AuthViewModel
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
 import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel
@@ -22,6 +23,8 @@ import org.koin.dsl.module
 @FlowPreview
 @ExperimentalCoroutinesApi
 val presentationModule = module {
+
+    viewModel { AuthViewModel(get(), get()) }
 
     //coroutines
     viewModel { CoroutinesMenuViewModel() }

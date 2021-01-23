@@ -2,6 +2,6 @@
 // http://www.softeq.com
 package com.barkatme.demo.ui.base
 
-import android.app.Activity
+import androidx.fragment.app.FragmentActivity
 
-abstract class BaseActivity : Activity()
+abstract class BaseActivity : FragmentActivity()

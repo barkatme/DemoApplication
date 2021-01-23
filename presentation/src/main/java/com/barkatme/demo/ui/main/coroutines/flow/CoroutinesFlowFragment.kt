@@ -19,16 +19,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CoroutinesFlowFragment(private val layout: Int = R.layout.fragment_coroutines_flow) :
     BaseFragment(layout) {
 
-    companion object {
-        val TAG = CoroutinesFlowFragment::class.simpleName
-    }
-
     private val viewModel: CoroutinesFlowViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentCoroutinesFlowBinding>(
             layoutInflater,
             layout,

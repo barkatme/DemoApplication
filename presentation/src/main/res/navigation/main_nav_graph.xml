@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/coroutinesGraph">
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.barkatme.demo.ui.main.auth.AuthFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_coroutinesGraph"
+            app:destination="@id/coroutinesGraph" />
+    </fragment>
 
     <navigation
         android:id="@+id/coroutinesGraph"

@@ -1,13 +1,13 @@
 // Developed for %CLIENT% by Softeq Development Corporation
 // http://www.softeq.com
-package com.barkatme.data.repository
+package com.barkatme.data.repository.firstpdm.giphy
 
 import com.barkatme.data.model.giphy.toDataModel
-import com.barkatme.data.repository.room.giphy.GifDao
-import com.barkatme.data.repository.room.giphy.toDomainGif
-import com.barkatme.data.repository.room.giphy.toLocalGif
+import com.barkatme.data.repository.firstpdm.room.GifDao
+import com.barkatme.data.repository.firstpdm.room.toDomainGif
+import com.barkatme.data.repository.firstpdm.room.toLocalGif
 import com.barkatme.demo.domain.model.giphy.Gif
-import com.barkatme.demo.domain.repository.GiphyLocalRepository
+import com.barkatme.demo.domain.repository.giphy.GiphyLocalRepository
 
 class GiphyLocalRepositoryImpl(private val gifDao: GifDao) : GiphyLocalRepository {
     override suspend fun getAll(): List<Gif> =

@@ -2,14 +2,14 @@ package com.barkatme.demo.ui.main.coroutines.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.barkatme.demo.domain.interactor.flow.GetTodoFlowInteractor
+import com.barkatme.demo.domain.usecase.flow.GetTodoFlowUseCase
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class CoroutinesFlowViewModel(private val getTodoFlowInteractor: GetTodoFlowInteractor) :
+class CoroutinesFlowViewModel(private val getTodoFlowInteractor: GetTodoFlowUseCase) :
     ViewModel(),
     CoroutineScope {
 
