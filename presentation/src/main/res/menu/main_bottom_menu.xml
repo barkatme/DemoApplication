@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/coroutines"
+        android:id="@+id/coroutinesGraph"
         android:icon="@drawable/ic_menu_coroutines"
         android:title="@string/coroutines"
         android:orderInCategory="1"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/jetpack"
+        android:id="@+id/jetpackGraph"
         android:icon="@drawable/ic_menu_jetpack"
         android:title="@string/jetpack"
         android:orderInCategory="2"
@@ -17,7 +17,7 @@
 
 
     <item
-        android:id="@+id/room"
+        android:id="@+id/roomGraph"
         android:icon="@drawable/ic_menu_room"
         app:showAsAction="always"
         android:orderInCategory="2"

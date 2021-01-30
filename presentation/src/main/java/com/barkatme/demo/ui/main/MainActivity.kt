@@ -2,7 +2,7 @@ package com.barkatme.demo.ui.main
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.ActivityMainBinding
@@ -16,9 +16,13 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    }
+
+    override fun onStart() {
+        super.onStart()
         NavigationUI.setupWithNavController(
             binding.bottomNavigation,
-            (binding.navHostFragment as (NavHostFragment)).navController
+            binding.navHostFragment.findNavController()
         )
     }
 }
