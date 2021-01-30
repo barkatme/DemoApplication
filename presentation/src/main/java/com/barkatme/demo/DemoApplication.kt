@@ -18,7 +18,6 @@ class DemoApplication : Application() {
         super.onCreate()
         startPresentationKoin(this@DemoApplication)
         startCounter()
-//        throw IOException("test exception")
     }
 
     private fun startCounter() {
