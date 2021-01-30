@@ -2,7 +2,7 @@ package com.barkatme.demo.ui.main
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.ActivityMainBinding
@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         NavigationUI.setupWithNavController(
             binding.bottomNavigation,
-            findNavController(R.id.nav_host_fragment)
+            (binding.navHostFragment as (NavHostFragment)).navController
         )
     }
 }

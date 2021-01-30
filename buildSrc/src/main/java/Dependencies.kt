@@ -4,7 +4,8 @@ const val kotlinVersion = "1.4.21"
 
 object Libraries {
     private object Versions {
-        const val navigation = "2.3.2"
+        const val navigation = "2.3.3"
+        const val navigationCompose = "1.0.0-alpha06"
         const val jetpack = "1.2.0"
         const val constraintLayout = "2.0.4"
         const val ktx = "1.3.1"
@@ -71,8 +72,8 @@ object Libraries {
     const val androidxNavigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    // Jetpack Compose Integration
-    const val androidxNavigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha05"
+    const val androidxNavigationFeatures =  "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+    const val androidxNavigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     const val recyclerViewSelection = "androidx.recyclerview:recyclerview-selection:" +
