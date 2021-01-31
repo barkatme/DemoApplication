@@ -5,12 +5,13 @@ package com.barkatme.demo.ui.main.room.giphy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.barkatme.demo.R
 import com.barkatme.demo.domain.model.giphy.Gif
 import com.barkatme.demo.ui.extensions.loadGif
-import kotlinx.android.synthetic.main.item_room_gif.view.*
 
 class RoomGifsAdapter(private val onClick: (Gif) -> Unit) :
     ListAdapter<Gif, RoomGifsAdapter.ViewHolder>(RoomGifsDiffCallback()) {
@@ -25,8 +26,10 @@ class RoomGifsAdapter(private val onClick: (Gif) -> Unit) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(gif: Gif, onClick: (Gif) -> Unit) {
-            itemView.tvGifTitle.text = gif.title
-            gif.url?.let { itemView.imgImage.loadGif(it, gif.previewUrl) }
+            itemView.findViewById<TextView>(R.id.tvGifTitle).text = gif.title
+            gif.url.let {
+                itemView.findViewById<ImageView>(R.id.imgImage).loadGif(it, gif.previewUrl)
+            }
             itemView.setOnClickListener { onClick(gif) }
         }
     }

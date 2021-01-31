@@ -4,6 +4,7 @@ import android.app.Application
 import com.barkatme.data.dataModule
 import com.barkatme.demo.domain.domainModule
 import com.barkatme.demo.ui.main.auth.AuthViewModel
+import com.barkatme.demo.ui.main.chat.ChatViewModel
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
 import com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel
 import com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuViewModel
@@ -27,6 +28,7 @@ val presentationModule = module {
     viewModel { AuthViewModel(get(), get()) }
 
     //coroutines
+    viewModel { ChatViewModel(get(), get()) }
     viewModel { CoroutinesMenuViewModel() }
     viewModel { CoroutinesFlowViewModel(get()) }
     viewModel { CoroutinesChannelViewModel(get()) }

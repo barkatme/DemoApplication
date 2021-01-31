@@ -8,6 +8,7 @@ import com.barkatme.data.api.giphy.GiphyApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderFlowApiImpl
 import com.barkatme.data.repository.AppDatabase
+import com.barkatme.data.repository.demo.ChatRepositoryImpl
 import com.barkatme.data.repository.demo.TokenRepositoryImpl
 import com.barkatme.data.repository.firstpdm.giphy.GiphyLocalPagedRepository
 import com.barkatme.data.repository.firstpdm.giphy.GiphyLocalRepositoryImpl
@@ -17,6 +18,7 @@ import com.barkatme.demo.domain.api.GiphyApi
 import com.barkatme.demo.domain.api.PlaceholderApi
 import com.barkatme.demo.domain.api.PlaceholderFlowApi
 import com.barkatme.demo.domain.domainModule
+import com.barkatme.demo.domain.repository.ChatRepository
 import com.barkatme.demo.domain.repository.TokenRepository
 import com.barkatme.demo.domain.repository.giphy.GiphyLocalRepository
 import com.barkatme.demo.domain.repository.giphy.GiphyRepository
@@ -44,6 +46,7 @@ val dataModule = module(override = true) {
             Context.MODE_PRIVATE
         )
     }
+    single<ChatRepository> { ChatRepositoryImpl(get()) }
     single<TokenRepository> { TokenRepositoryImpl(get()) }
 
     single {

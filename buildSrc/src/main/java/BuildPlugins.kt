@@ -21,7 +21,6 @@ object BuildPlugins {
     const val kotlin = "kotlin"
     const val serialization = "kotlinx-serialization"
     const val kotlinAndroid = "kotlin-android"
-    const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"
 
     const val firebasePerformance = "com.google.firebase.firebase-perf"

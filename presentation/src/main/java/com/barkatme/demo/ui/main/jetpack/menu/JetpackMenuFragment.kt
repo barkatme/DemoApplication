@@ -12,7 +12,6 @@ import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentJetpackMenuBinding
 import com.barkatme.demo.ui.base.BaseFragment
 import com.barkatme.demo.ui.extensions.doOnClick
-import kotlinx.android.synthetic.main.fragment_jetpack_menu.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_menu) :
@@ -20,12 +19,16 @@ class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_me
 
     val viewModel: JetpackMenuViewModel by viewModel()
 
+    private var _binding: FragmentJetpackMenuBinding? = null
+    val binding: FragmentJetpackMenuBinding
+        get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<FragmentJetpackMenuBinding>(
+    ): View {
+        _binding = DataBindingUtil.inflate(
             layoutInflater,
             layout,
             container,
@@ -37,7 +40,7 @@ class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_me
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.menu_camera_x.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackCameraXFragment) }
-        view.menu_jetpack_paging.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackPagingFragment) }
+        binding.menuCameraX.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackCameraXFragment) }
+        binding.menuJetpackPaging.doOnClick { findNavController().navigate(R.id.action_jetpack_to_jetpackPagingFragment) }
     }
 }

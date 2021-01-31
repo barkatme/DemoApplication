@@ -12,4 +12,9 @@
     <string name="room">Room</string>
     <string name="giphy">Giphy</string>
     <string name="jetpack_paging">Jetpack Paging</string>
+    <string name="send">send</string>
+    <string name="new_message_hint">type your message here</string>
+    <string name="nick_name_hint">type your nick name here</string>
+    <string name="chat">chat</string>
+    <string name="enter_message">Enter Message</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.barkatme.demo.domain.api
 
 import com.barkatme.demo.domain.model.demo.Credentials
+import com.barkatme.demo.domain.model.demo.Message
 import com.barkatme.demo.domain.model.demo.Token
+import kotlinx.coroutines.flow.Flow
 
 interface DemoApi {
 
@@ -15,13 +17,16 @@ interface DemoApi {
         const val currentUser = BASE + "user"
     }
 
-    companion object{
+    companion object {
         const val USER_ID_PARAM = "userId"
     }
 
     suspend fun signIn(credentials: Credentials): Token
     suspend fun signUp(credentials: Credentials): Token
     suspend fun signOut(): Token
+
+    suspend fun chatMessagesFlow(): Flow<Message>
+    suspend fun newMessage(message: Message)
 
     suspend fun getCurrentUser(): String
 }

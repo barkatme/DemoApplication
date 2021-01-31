@@ -17,7 +17,6 @@ import androidx.databinding.DataBindingUtil
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentCameraXBinding
 import com.barkatme.demo.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_camera_x.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -67,7 +66,7 @@ class JetpackCameraXFragment(private val layout: Int = R.layout.fragment_camera_
         val binding =
             DataBindingUtil.inflate<FragmentCameraXBinding>(inflater, layout, container, false)
         binding.viewModel = viewModel
-        viewFinder = binding.root.previewView
+        viewFinder = binding.previewView
         viewFinder.post {
             displayId = viewFinder.display.displayId
             setUpCamera()

@@ -24,7 +24,7 @@ class AuthFragment(private val layout: Int = R.layout.fragment_auth) : Fragment(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = DataBindingUtil.inflate<FragmentAuthBinding>(
+        _binding = DataBindingUtil.inflate(
             inflater,
             layout,
             container,

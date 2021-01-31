@@ -9,4 +9,5 @@
     <dimen name="roomGiphyTitleSize">18sp</dimen>
     <dimen name="roomGiphyTitlePadding">8dp</dimen>
     <dimen name="previewCameraHeight">400dp</dimen>
+    <dimen name="message_date">10sp</dimen>
 </resources>

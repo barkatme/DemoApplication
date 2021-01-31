@@ -5,13 +5,14 @@ package com.barkatme.demo.ui.main.jetpack.paging
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.barkatme.demo.R
 import com.barkatme.demo.domain.model.giphy.Gif
 import com.barkatme.demo.ui.extensions.loadGif
 import com.barkatme.demo.ui.main.room.giphy.RoomGifsDiffCallback
-import kotlinx.android.synthetic.main.item_room_gif.view.*
 
 class GifPageListAdapter :
     PagedListAdapter<Gif, GifPageListAdapter.ViewHolder>(RoomGifsDiffCallback()) {
@@ -28,8 +29,10 @@ class GifPageListAdapter :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(gif: Gif) {
-            itemView.tvGifTitle.text = gif.title
-            gif.url.let { itemView.imgImage.loadGif(it, gif.previewUrl) }
+            itemView.findViewById<TextView>(R.id.tvGifTitle).text = gif.title
+            gif.url.let {
+                itemView.findViewById<ImageView>(R.id.imgImage).loadGif(it, gif.previewUrl)
+            }
         }
     }
 }

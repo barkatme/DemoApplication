@@ -9,7 +9,6 @@ plugins {
     id(BuildPlugins.firebaseCrashlytics)
     id(BuildPlugins.firebasePerformance)
     id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
 }
 

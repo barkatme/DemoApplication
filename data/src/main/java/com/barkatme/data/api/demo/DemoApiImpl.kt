@@ -6,6 +6,7 @@ import com.barkatme.data.model.demo.toDomainModel
 import com.barkatme.data.model.demo.toNetModel
 import com.barkatme.demo.domain.api.DemoApi
 import com.barkatme.demo.domain.model.demo.Credentials
+import com.barkatme.demo.domain.model.demo.Message
 import com.barkatme.demo.domain.model.demo.Token
 import com.barkatme.demo.domain.repository.TokenRepository
 import com.github.kittinunf.fuel.core.Request
@@ -14,6 +15,8 @@ import com.github.kittinunf.fuel.coroutines.awaitString
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
@@ -48,12 +51,20 @@ class DemoApiImpl(
             .toDomainModel()
     }
 
+    val messagesFlow: MutableStateFlow<Message> = MutableStateFlow(Message())
+    override suspend fun chatMessagesFlow(): Flow<Message> {
+        return messagesFlow
+    }
+
+    override suspend fun newMessage(message: Message) {
+        messagesFlow.emit(message.copy(nickName = "some sender"))
+    }
+
     override suspend fun getCurrentUser(): String = withContext(Dispatchers.IO) {
         DemoApi.URL.currentUser.httpGet()
             .demoAuth()
             .awaitString()
     }
-
 
     private suspend fun Request.demoAuth() =
         authentication().bearer(tokenRepository.requireToken().token)

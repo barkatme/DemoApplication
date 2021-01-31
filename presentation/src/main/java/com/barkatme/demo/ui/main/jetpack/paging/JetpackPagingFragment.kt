@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentJetpackPagingBinding
 import com.barkatme.demo.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_jetpack_paging.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,13 +20,17 @@ class JetpackPagingFragment(private val layout: Int = R.layout.fragment_jetpack_
     BaseFragment(layout) {
 
     val viewModel: JetpackPagingViewModel by viewModel()
-    val adapter = GifPageListAdapter()
+    private val adapter = GifPageListAdapter()
+
+    private var _binding: FragmentJetpackPagingBinding? = null
+    val binding: FragmentJetpackPagingBinding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentJetpackPagingBinding>(
             inflater,
             layout,
@@ -42,9 +45,9 @@ class JetpackPagingFragment(private val layout: Int = R.layout.fragment_jetpack_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.gifAllList.observe(viewLifecycleOwner) { adapter.submitList(it) }
-        view.rvJetpackGifs.adapter = adapter
-        view.rvJetpackGifs.layoutManager = LinearLayoutManager(requireContext())
-        view.svJetpackGifs.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.rvJetpackGifs.adapter = adapter
+        binding.rvJetpackGifs.layoutManager = LinearLayoutManager(requireContext())
+        binding.svJetpackGifs.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = true
             override fun onQueryTextChange(query: String?): Boolean {
                 viewModel.filterTextAll.value = "%$query%"

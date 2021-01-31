@@ -14,7 +14,6 @@ import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentRoomGiphyBinding
 import com.barkatme.demo.ui.base.BaseFragment
 import com.barkatme.demo.ui.extensions.getQueryTextChangeStateFlow
-import kotlinx.android.synthetic.main.fragment_room_giphy.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.launchIn
@@ -27,24 +26,33 @@ class RoomGiphyFragment(private val layout: Int = R.layout.fragment_room_giphy) 
     val viewModel: RoomGiphyViewModel by viewModel()
     private val adapter = RoomGifsAdapter { gif -> viewModel.onGifClick(gif) }
 
+    private var _binding: FragmentRoomGiphyBinding? = null
+    val binding: FragmentRoomGiphyBinding
+        get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding =
             DataBindingUtil.inflate<FragmentRoomGiphyBinding>(inflater, layout, container, false)
         binding.viewModel = viewModel
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     @FlowPreview
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvRoomGifs.adapter = adapter
-        rvRoomGifs.layoutManager = LinearLayoutManager(context)
-        viewModel.createGifsLiveData(svGifs.getQueryTextChangeStateFlow())
+        binding.rvRoomGifs.adapter = adapter
+        binding.rvRoomGifs.layoutManager = LinearLayoutManager(context)
+        viewModel.createGifsLiveData(binding.svGifs.getQueryTextChangeStateFlow())
             .asFlow()
             .onEach { adapter.submitList(it) }
             .launchIn(lifecycleScope)
