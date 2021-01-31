@@ -1,6 +1,7 @@
 package com.barkatme.demo.domain.usecase.demo.auth
 
 import com.barkatme.demo.domain.api.DemoApi
+import com.barkatme.demo.domain.model.demo.AuthenticationData
 import com.barkatme.demo.domain.model.demo.Credentials
 import com.barkatme.demo.domain.model.demo.Token
 import com.barkatme.demo.domain.repository.TokenRepository
@@ -12,6 +13,7 @@ class SignInUseCase(
     suspend fun signIn(email: String, password: String): Token {
         val token = demoApi.signIn(Credentials(email, password))
         tokenRepository.saveToken(token)
+        AuthenticationData.getInstance().token = token
         return token
     }
 }
