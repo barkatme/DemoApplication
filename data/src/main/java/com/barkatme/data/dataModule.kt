@@ -9,6 +9,7 @@ import com.barkatme.data.api.placeholder.PlaceholderApiImpl
 import com.barkatme.data.api.placeholder.PlaceholderFlowApiImpl
 import com.barkatme.data.repository.AppDatabase
 import com.barkatme.data.repository.demo.ChatRepositoryImpl
+import com.barkatme.data.repository.demo.ChatWs
 import com.barkatme.data.repository.demo.TokenRepositoryImpl
 import com.barkatme.data.repository.firstpdm.giphy.GiphyLocalPagedRepository
 import com.barkatme.data.repository.firstpdm.giphy.GiphyLocalRepositoryImpl
@@ -22,6 +23,9 @@ import com.barkatme.demo.domain.repository.ChatRepository
 import com.barkatme.demo.domain.repository.TokenRepository
 import com.barkatme.demo.domain.repository.giphy.GiphyLocalRepository
 import com.barkatme.demo.domain.repository.giphy.GiphyRepository
+import io.ktor.client.*
+import io.ktor.client.engine.okhttp.*
+import io.ktor.client.features.websocket.*
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -38,7 +42,8 @@ val dataModule = module(override = true) {
         }
     }
 
-    single<DemoApi> { DemoApiImpl(get(), get()) }
+    single<DemoApi> { DemoApiImpl(get(), get(), get()) }
+    single { ChatWs(get(), get()) }
 
     factory {
         androidApplication().getSharedPreferences(
@@ -55,6 +60,12 @@ val dataModule = module(override = true) {
             AppDatabase::class.java,
             BuildConfig.DATABASE_NAME
         ).build()
+    }
+
+    single {
+        HttpClient(OkHttp) {
+            install(WebSockets)
+        }
     }
 
     //first pdm
