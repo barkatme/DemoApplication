@@ -9,14 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.barkatme.demo.R
 import com.barkatme.demo.domain.model.demo.Message
 import java.util.*
-
+import kotlin.time.ExperimentalTime
+import kotlin.time.days
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     private val myNickName: String = ""
     private val messages: ArrayList<Message> = arrayListOf()
 
+    @ExperimentalTime
     fun newMessage(message: Message) {
+        if (messages.isNotEmpty() && messages.last().time.days == message.time.days) {
+            message.showDate = false
+        }
         messages.add(message)
         notifyDataSetChanged()
     }
@@ -49,6 +54,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
             messageText.text = message.text
             timeText.text = Date(message.time).toString()
             nameText.text = message.nickName
+            timeText.takeIf { !message.showDate }?.visibility = View.GONE
         }
 
         companion object {

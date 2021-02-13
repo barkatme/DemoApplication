@@ -5,4 +5,5 @@ data class Message(
     val nickName: String = "",
     val time: Long = System.currentTimeMillis(),
     val text: String = "",
+    var showDate: Boolean = true
 )

@@ -42,13 +42,11 @@ class ChatWs(private val client: HttpClient, private val json: Json) {
                             send(it.toNetModel().asJson(json))
                         }
                 }
-                launch {
-                    incoming.consumeAsFlow()
-                        .flowOn(Dispatchers.IO)
-                        .map { it.readBytes().decodeToString() }
-                        .map { it.asNetMessage(json).toDomainModel() }
-                        .collect { incomingMessages.emit(it) }
-                }
+                incoming.consumeAsFlow()
+                    .flowOn(Dispatchers.IO)
+                    .map { it.readBytes().decodeToString() }
+                    .map { it.asNetMessage(json).toDomainModel() }
+                    .collect { incomingMessages.emit(it) }
 
                 isConnected = false
             }
