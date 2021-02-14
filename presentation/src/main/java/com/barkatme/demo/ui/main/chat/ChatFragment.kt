@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.consumeAsFlow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
-
+@ExperimentalTime
 class ChatFragment(private val layout: Int = R.layout.fragment_chat) : Fragment(layout) {
 
     private val viewModel: ChatViewModel by viewModel()
@@ -39,8 +39,8 @@ class ChatFragment(private val layout: Int = R.layout.fragment_chat) : Fragment(
         binding.viewModel = viewModel
         return binding.root
     }
-    
-    @ExperimentalTime
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvChat.layoutManager = LinearLayoutManager(context)

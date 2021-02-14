@@ -1,6 +1,7 @@
 package com.barkatme.demo.ui.main.chat
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +11,18 @@ import com.barkatme.demo.R
 import com.barkatme.demo.domain.model.demo.Message
 import java.util.*
 import kotlin.time.ExperimentalTime
-import kotlin.time.days
+import kotlin.time.milliseconds
 
+@ExperimentalTime
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     private val myNickName: String = ""
     private val messages: ArrayList<Message> = arrayListOf()
 
-    @ExperimentalTime
     fun newMessage(message: Message) {
-        if (messages.isNotEmpty() && messages.last().time.days == message.time.days) {
+        if (messages.isNotEmpty()
+            && messages.last().time.milliseconds.inDays.toInt() == message.time.milliseconds.inDays.toInt()
+        ) {
             message.showDate = false
         }
         messages.add(message)
@@ -46,15 +49,20 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var messageText: TextView = itemView.findViewById<View>(R.id.message_text) as TextView
-        var timeText: TextView = itemView.findViewById<View>(R.id.date) as TextView
-        var nameText: TextView = itemView.findViewById<View>(R.id.nick_name) as TextView
+        var messageText: TextView = itemView.findViewById(R.id.message_text)
+        var dateText: TextView = itemView.findViewById(R.id.date)
+        var nameText: TextView = itemView.findViewById(R.id.nick_name)
+        var timeText: TextView = itemView.findViewById(R.id.message_time)
 
+        @SuppressLint("SetTextI18n")
         fun bind(message: Message) {
             messageText.text = message.text
-            timeText.text = Date(message.time).toString()
+            dateText.text = Date(message.time).toString()
             nameText.text = message.nickName
-            timeText.takeIf { !message.showDate }?.visibility = View.GONE
+            dateText.takeIf { !message.showDate }?.visibility = View.GONE
+            message.time.milliseconds.toComponents { _, hours, minutes, seconds, _ ->
+                timeText.text = "$hours:$minutes:$seconds"
+            }
         }
 
         companion object {

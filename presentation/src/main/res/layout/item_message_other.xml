@@ -68,7 +68,7 @@
 
 
     <TextView
-        android:id="@+id/text_gchat_timestamp_other"
+        android:id="@+id/message_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="8:00"

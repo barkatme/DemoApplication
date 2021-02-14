@@ -16,7 +16,13 @@ import kotlinx.serialization.json.Json
 
 class ChatWs(private val client: HttpClient, private val json: Json) {
 
-    var isConnected = false
+    companion object {
+        const val STATUS_DISCONNECTED = 0
+        const val STATUS_CONNECTING = 1
+        const val STATUS_CONNECTED = 2
+    }
+
+    var status = STATUS_DISCONNECTED
         private set
 
     val incomingMessages: MutableStateFlow<Message> = MutableStateFlow(Message())
@@ -29,28 +35,32 @@ class ChatWs(private val client: HttpClient, private val json: Json) {
     }
 
     suspend fun connect() {
-        try {
-            client.ws(
-                host = "barkatme-demo.herokuapp.com",
-                path = "/chat"
-            ) {
-                isConnected = true
-
-                launch {
-                    outgoingMessages
-                        .collect {
-                            send(it.toNetModel().asJson(json))
-                        }
+        if (status == STATUS_DISCONNECTED) {
+            status = STATUS_CONNECTING
+            try {
+                client.ws(
+                    host = "barkatme-demo.herokuapp.com",
+                    path = "/chat"
+                ) {
+                    status = STATUS_CONNECTED
+                    launch {
+                        outgoingMessages
+                            .collect {
+                                send(it.toNetModel().asJson(json))
+                            }
+                    }
+                    incoming.consumeAsFlow()
+                        .flowOn(Dispatchers.IO)
+                        .map { it.readBytes().decodeToString() }
+                        .map { it.asNetMessage(json).toDomainModel() }
+                        .collect { incomingMessages.emit(it) }
                 }
-                incoming.consumeAsFlow()
-                    .flowOn(Dispatchers.IO)
-                    .map { it.readBytes().decodeToString() }
-                    .map { it.asNetMessage(json).toDomainModel() }
-                    .collect { incomingMessages.emit(it) }
 
-                isConnected = false
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                status = STATUS_DISCONNECTED
             }
-        } finally {
         }
     }
 

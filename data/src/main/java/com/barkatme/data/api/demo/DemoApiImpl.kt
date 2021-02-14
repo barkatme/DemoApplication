@@ -53,16 +53,12 @@ class DemoApiImpl(
     }
 
     override suspend fun chatMessagesFlow(): Flow<Message> {
-        if (!chatWs.isConnected){
-            chatWs.connect()
-        }
+        chatWs.connect()
         return chatWs.incomingMessages
     }
 
     override suspend fun newMessage(message: Message) {
-        if (!chatWs.isConnected){
-            chatWs.connect()
-        }
+        chatWs.connect()
         chatWs.newMessage(message)
     }
 
