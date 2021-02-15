@@ -82,7 +82,7 @@
                 android:layout_alignParentEnd="true"
                 android:background="?attr/selectableItemBackground"
                 android:onClick="@{v->viewModel.send()}"
-                tools:text="Send"
+                android:text="@string/send"
                 android:textColor="@color/colorPrimary" />
 
         </RelativeLayout>
