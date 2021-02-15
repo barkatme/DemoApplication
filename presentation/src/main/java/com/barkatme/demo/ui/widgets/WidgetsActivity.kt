@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.ActivityWidgetsBinding
@@ -31,7 +32,7 @@ class WidgetsActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_widgets)
     }
 
-    fun selectWidget() {
+    private fun selectWidget() {
         val appWidgetId = mAppWidgetHost.allocateAppWidgetId()
         val pickIntent = Intent(AppWidgetManager.ACTION_APPWIDGET_PICK)
         pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -91,6 +92,20 @@ class WidgetsActivity : BaseActivity() {
         super.onStart()
         binding.buttonAddWidget.setOnClickListener { selectWidget() }
         mAppWidgetHost.startListening()
+
+        val infos = mAppWidgetManager.installedProviders
+
+        for (i in infos.indices) {
+            val provider = infos[i].provider
+//            val ids = mAppWidgetManager.getAppWidgetIds(provider)
+            Log.d("TAG", provider.packageName + "; " + provider.className)
+//            if (ids.isNotEmpty()) {
+//                Log.d("TAG", "Found non-zero-length provider!")
+//                id = ids[0]
+//                info = infos[i]
+//                break
+//            }.
+        }
     }
 
     override fun onStop() {
