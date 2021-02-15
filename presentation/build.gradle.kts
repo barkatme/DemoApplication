@@ -51,6 +51,7 @@ dependencies {
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.ktxCore)
     implementation(Libraries.fragmentKtx)
+    implementation("com.android.support:support-compat:28.0.0")
 
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)
@@ -60,9 +61,6 @@ dependencies {
     implementation(Libraries.firebaseCrashlytics)
     implementation(Libraries.firebasePerformance)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
     koinAndroid()
     fuel()
@@ -78,6 +76,9 @@ dependencies {
 
 fun DependencyHandlerScope.androidxDependencies() {
     androidXCamera()
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
     implementation(Libraries.androidxPaging)
     implementation(Libraries.androidxViewModel)
     implementation(Libraries.androidxLiveData)

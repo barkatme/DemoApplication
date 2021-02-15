@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.barkatme.demo.R
@@ -39,7 +38,6 @@ class AuthFragment(private val layout: Int = R.layout.fragment_auth) : Fragment(
         super.onStart()
         viewModel.onAuthCompleted = { token ->
             Log.d(AuthViewModel.TAG, "auth token: $token")
-            Toast.makeText(context, token.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
