@@ -19,4 +19,5 @@
     <string name="enter_message">Enter Message</string>
     <string name="notification_channel_name">barkatmenotification</string>
     <string name="notification_channel_description">barkatmenotificationdesc</string>
+    <string name="add_widget">add widget</string>
 </resources>

@@ -61,6 +61,8 @@ dependencies {
     implementation(Libraries.firebaseCrashlytics)
     implementation(Libraries.firebasePerformance)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     koinAndroid()
     fuel()

@@ -1,5 +1,6 @@
 package com.barkatme.demo.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -7,6 +8,7 @@ import androidx.navigation.ui.NavigationUI
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.ActivityMainBinding
 import com.barkatme.demo.ui.base.BaseActivity
+import com.barkatme.demo.ui.widgets.WidgetsActivity
 
 
 class MainActivity : BaseActivity() {
@@ -24,5 +26,6 @@ class MainActivity : BaseActivity() {
             binding.bottomNavigation,
             binding.navHostFragment.findNavController()
         )
+        startActivity(Intent(baseContext, WidgetsActivity::class.java))
     }
 }
