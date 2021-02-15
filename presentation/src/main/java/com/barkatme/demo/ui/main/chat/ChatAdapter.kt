@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.barkatme.demo.R
 import com.barkatme.demo.domain.model.demo.Message
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
@@ -58,17 +59,18 @@ class ChatAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(message: Message) {
             messageText.text = message.text
-            dateText.text = Date(message.time).toString()
+            dateText.text = dateFormatter.format(Date(message.time))
             nameText.text = message.nickName
             dateText.takeIf { !message.showDate }?.visibility = View.GONE
-            message.time.milliseconds.toComponents { _, hours, minutes, seconds, _ ->
-                timeText.text = "$hours:$minutes:$seconds"
-            }
+            timeText.text = timeFormatter.format(Date(message.time))
         }
 
         companion object {
             const val OTHER = 0
             const val ME = 1
+
+            val dateFormatter: SimpleDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
+            val timeFormatter: SimpleDateFormat = SimpleDateFormat("hh:mm:ss", Locale.ENGLISH)
         }
 
     }
