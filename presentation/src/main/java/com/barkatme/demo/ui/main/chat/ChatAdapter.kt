@@ -14,9 +14,10 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
 
 @ExperimentalTime
-class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+class ChatAdapter(
+    private val checkNickName: (String) -> Boolean = { false }
+) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
-    private val myNickName: String = ""
     private val messages: ArrayList<Message> = arrayListOf()
 
     fun newMessage(message: Message) {
@@ -30,7 +31,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int =
-        if (messages[position].nickName == myNickName) ViewHolder.ME else ViewHolder.OTHER
+        if (checkNickName(messages[position].nickName)) ViewHolder.ME else ViewHolder.OTHER
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutId = when (viewType) {

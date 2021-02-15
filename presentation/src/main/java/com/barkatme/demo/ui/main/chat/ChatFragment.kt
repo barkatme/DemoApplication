@@ -12,6 +12,7 @@ import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentChatBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.filter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
@@ -23,7 +24,9 @@ class ChatFragment(private val layout: Int = R.layout.fragment_chat) : Fragment(
     val binding: FragmentChatBinding
         get() = _binding!!
 
-    private val adapter: ChatAdapter = ChatAdapter()
+    private val adapter: ChatAdapter = ChatAdapter { nickName ->
+        viewModel.nickName.value == nickName
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,9 +49,11 @@ class ChatFragment(private val layout: Int = R.layout.fragment_chat) : Fragment(
         binding.rvChat.layoutManager = LinearLayoutManager(context)
         binding.rvChat.adapter = adapter
         lifecycleScope.launchWhenResumed {
-            viewModel.messages.consumeAsFlow().collect {
-                adapter.newMessage(it)
-            }
+            viewModel.messages.consumeAsFlow()
+                .filter { it.text.isNotEmpty() }
+                .collect {
+                    adapter.newMessage(it)
+                }
         }
     }
 
