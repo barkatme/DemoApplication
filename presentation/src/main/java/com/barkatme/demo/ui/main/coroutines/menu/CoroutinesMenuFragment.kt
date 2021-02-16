@@ -24,7 +24,7 @@ class CoroutinesMenuFragment(private val layout: Int = R.layout.fragment_corouti
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentCoroutiensMenuBinding>(
             layoutInflater,
             layout,

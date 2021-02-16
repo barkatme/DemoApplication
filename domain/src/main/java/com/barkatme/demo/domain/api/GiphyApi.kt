@@ -4,6 +4,7 @@ package com.barkatme.demo.domain.api
 
 import com.barkatme.demo.domain.model.giphy.Gif
 
+@Suppress("unused")
 interface GiphyApi {
 
 

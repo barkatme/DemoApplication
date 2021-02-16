@@ -51,10 +51,10 @@ class ChatAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var messageText: TextView = itemView.findViewById(R.id.message_text)
-        var dateText: TextView = itemView.findViewById(R.id.date)
-        var nameText: TextView = itemView.findViewById(R.id.nick_name)
-        var timeText: TextView = itemView.findViewById(R.id.message_time)
+        private var messageText: TextView = itemView.findViewById(R.id.message_text)
+        private var dateText: TextView = itemView.findViewById(R.id.date)
+        private var nameText: TextView = itemView.findViewById(R.id.nick_name)
+        private var timeText: TextView = itemView.findViewById(R.id.message_time)
 
         @SuppressLint("SetTextI18n")
         fun bind(message: Message) {

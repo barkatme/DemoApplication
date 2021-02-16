@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.barkatme.data.model.giphy.remote
 
 val gifDataSerializer = GifData.serializer()

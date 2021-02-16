@@ -22,8 +22,7 @@ class ChatWs(private val client: HttpClient, private val json: Json) {
         const val STATUS_CONNECTED = 2
     }
 
-    var status = STATUS_DISCONNECTED
-        private set
+    private var status = STATUS_DISCONNECTED
 
     val incomingMessages: MutableStateFlow<Message> = MutableStateFlow(Message())
     private val outgoingMessages: MutableStateFlow<Message> = MutableStateFlow(Message())

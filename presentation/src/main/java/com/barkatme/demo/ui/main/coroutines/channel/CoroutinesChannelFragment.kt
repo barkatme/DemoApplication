@@ -18,16 +18,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CoroutinesChannelFragment(private val layout: Int = R.layout.fragment_coroutines_channels) :
     BaseFragment(layout) {
 
-    companion object {
-        val TAG = CoroutinesChannelFragment::class.simpleName
-    }
-
     private val viewModel: CoroutinesChannelViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentCoroutinesChannelsBinding>(
             inflater,
             layout,

@@ -69,7 +69,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toStartOf="@+id/button_send"
                 android:background="@android:color/transparent"
-                android:hint="@string/enter_message"
+                android:hint="@string/new_message_hint"
                 android:inputType="text"
                 android:maxLines="6"
                 android:text="@={viewModel.message}"

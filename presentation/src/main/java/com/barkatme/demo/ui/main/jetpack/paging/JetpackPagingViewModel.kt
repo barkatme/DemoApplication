@@ -29,7 +29,7 @@ class JetpackPagingViewModel(
     var filterTextAll = MutableLiveData<String>()
 
     init {
-        gifAllList = Transformations.switchMap<String, PagedList<Gif>>(filterTextAll)
+        gifAllList = Transformations.switchMap(filterTextAll)
         { input: String ->
             val dataSourceFactory = if (input == "" || input == "%%") {
                 giphyLocalPagedRepository.loadAllGifs()
@@ -37,7 +37,7 @@ class JetpackPagingViewModel(
                 giphyLocalPagedRepository.loadAllGifsByTitle(input)
             }
 
-            LivePagedListBuilder<Int, Gif>(dataSourceFactory, config).build()
+            LivePagedListBuilder(dataSourceFactory, config).build()
         }
     }
 }

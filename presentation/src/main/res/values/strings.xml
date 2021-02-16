@@ -13,10 +13,10 @@
     <string name="giphy">Giphy</string>
     <string name="jetpack_paging">Jetpack Paging</string>
     <string name="send">send</string>
-    <string name="new_message_hint">type your message here</string>
-    <string name="nick_name_hint">type your nick name here</string>
+    <string name="new_message_hint">Type your message here</string>
+    <string name="nick_name_hint">Type your nick name here</string>
     <string name="chat">chat</string>
-    <string name="enter_message">Enter Message</string>
     <string name="notification_channel_name">barkatmenotification</string>
     <string name="notification_channel_description">barkatmenotificationdesc</string>
+    <string name="test_sign_in">test sign in</string>
 </resources>
