@@ -23,13 +23,13 @@ class WidgetsActivity : BaseActivity() {
     }
 
     lateinit var binding: ActivityWidgetsBinding
-    private val mAppWidgetManager by lazy { AppWidgetManager.getInstance(this) }
+    private val mAppWidgetManager by lazy { AppWidgetManager.getInstance(applicationContext) }
     private val mAppWidgetHost by lazy { AppWidgetHost(this, APPWIDGET_HOST_ID) }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_widgets)
+        test()
     }
 
     private fun selectWidget() {
@@ -79,13 +79,27 @@ class WidgetsActivity : BaseActivity() {
         }
     }
 
-    fun createWidget(data: Intent) {
+    private fun createWidget(data: Intent) {
         val extras = data.extras
         val appWidgetId = extras!!.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
         val appWidgetInfo = mAppWidgetManager.getAppWidgetInfo(appWidgetId)
         val hostView = mAppWidgetHost.createView(this, appWidgetId, appWidgetInfo)
         hostView.setAppWidget(appWidgetId, appWidgetInfo)
         binding.mainContent.addView(hostView)
+    }
+
+    private fun test() {
+        for (i in 1..10) {
+            try {
+                val appWidgetInfo = mAppWidgetManager.getAppWidgetInfo(i)
+                val hostView = mAppWidgetHost.createView(this, i, appWidgetInfo)
+                hostView.setAppWidget(i, appWidgetInfo)
+                binding.mainContent.addView(hostView)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+            }
+        }
     }
 
     override fun onStart() {
