@@ -24,4 +24,8 @@
     <string name="patterns">Design Patterns</string>
     <string name="_2nd_pdm">2nd PDM</string>
     <string name="_1st_pdm">1st PDM</string>
+    <string name="android_notification">Android notification</string>
+    <string name="notification">Notification</string>
+    <string name="android_notification_toast">Android notification + Toast</string>
+    <string name="toast_only">Toast only</string>
 </resources>
