@@ -1,26 +1,26 @@
-package com.barkatme.demo.ui.main.auth
+package com.barkatme.demo.ui.main.patterns
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.barkatme.demo.R
-import com.barkatme.demo.databinding.FragmentAuthBinding
+import com.barkatme.demo.databinding.FragmentPatternsBinding
 import com.barkatme.demo.ui.base.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.barkatme.demo.ui.extensions.doOnClick
 
-class AuthFragment(private val layout: Int = R.layout.fragment_auth) : BaseFragment(layout) {
+class PatternsFragment(private val layout: Int = R.layout.fragment_patterns) :
+    BaseFragment(layout) {
 
-    private val viewModel: AuthViewModel by viewModel()
-
-    private var _binding: FragmentAuthBinding? = null
-    val binding: FragmentAuthBinding
+    private var _binding: FragmentPatternsBinding? = null
+    val binding: FragmentPatternsBinding
         get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DataBindingUtil.inflate(
@@ -30,15 +30,12 @@ class AuthFragment(private val layout: Int = R.layout.fragment_auth) : BaseFragm
             false
         )
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        viewModel.onAuthCompleted = { token ->
-            Log.d(AuthViewModel.TAG, "auth token: $token")
-        }
+        binding.tvDecorator.doOnClick { findNavController().navigate(R.id.action_patterns_to_decorator) }
     }
 
     override fun onDestroy() {

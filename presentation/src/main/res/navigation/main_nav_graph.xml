@@ -84,6 +84,28 @@
             android:label="RoomGiphyFragment"
             tools:layout="@layout/fragment_room_giphy" />
     </navigation>
+
+    <navigation
+        android:id="@+id/patternsGraph"
+        app:startDestination="@id/patterns">
+
+        <fragment
+            android:id="@+id/patterns"
+            android:name="com.barkatme.demo.ui.main.patterns.PatternsFragment"
+            android:label="PatternsFragment"
+            tools:layout="@layout/fragment_patterns">
+            <action
+                android:id="@+id/action_patterns_to_decorator"
+                app:destination="@id/decorator" />
+        </fragment>
+        <fragment
+            android:id="@+id/decorator"
+            android:name="com.barkatme.demo.ui.main.patterns.decorator.DecoratorFragment"
+            android:label="DecoratorFragment"
+            tools:layout="@layout/fragment_decorator">
+        </fragment>
+    </navigation>
+
     <fragment
         android:id="@+id/chat"
         android:name="com.barkatme.demo.ui.main.chat.ChatFragment"

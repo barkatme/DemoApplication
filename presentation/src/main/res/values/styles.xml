@@ -27,4 +27,13 @@
         <item name="android:textSize">@dimen/roomGiphyTitleSize</item>
         <item name="android:padding">@dimen/roomGiphyTitlePadding</item>
     </style>
+
+    <style name="patter_item">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">#777777</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
 </resources>

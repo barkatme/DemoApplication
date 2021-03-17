@@ -20,4 +20,8 @@
     <string name="notification_channel_description">barkatmenotificationdesc</string>
     <string name="test_sign_in">test sign in</string>
     <string name="auth">Authentication</string>
+    <string name="decorator">decorator</string>
+    <string name="patterns">Design Patterns</string>
+    <string name="_2nd_pdm">2nd PDM</string>
+    <string name="_1st_pdm">1st PDM</string>
 </resources>
