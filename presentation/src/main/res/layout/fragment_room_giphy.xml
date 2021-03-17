@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.coroutines.menu.CoroutinesMenuFragment">
+        tools:context=".ui.main.pdm1.coroutines.menu.CoroutinesMenuFragment">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/svGifs"

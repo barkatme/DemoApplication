@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/auth"
-        android:name="com.barkatme.demo.ui.main.auth.AuthFragment"
+        android:name="com.barkatme.demo.ui.main.pdm2.auth.AuthFragment"
         android:label="AuthFragment"
         tools:layout="@layout/fragment_auth" />
 
@@ -16,17 +16,17 @@
         app:startDestination="@id/coroutines">
         <fragment
             android:id="@+id/flowFragment"
-            android:name="com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.coroutines.flow.CoroutinesFlowFragment"
             android:label="FlowFragment"
             tools:layout="@layout/fragment_coroutines_flow" />
         <fragment
             android:id="@+id/channelsFragment"
-            android:name="com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.coroutines.channel.CoroutinesChannelFragment"
             android:label="ChannelsFragment"
             tools:layout="@layout/fragment_coroutines_channels" />
         <fragment
             android:id="@+id/coroutines"
-            android:name="com.barkatme.demo.ui.main.coroutines.menu.CoroutinesMenuFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.coroutines.menu.CoroutinesMenuFragment"
             android:label="fragment_menu"
             tools:layout="@layout/fragment_coroutiens_menu">
             <action
@@ -43,7 +43,7 @@
         app:startDestination="@id/jetpack">
         <fragment
             android:id="@+id/jetpack"
-            android:name="com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.jetpack.menu.JetpackMenuFragment"
             android:label="JetpackMenuFragment"
             tools:layout="@layout/fragment_jetpack_menu">
             <action
@@ -55,12 +55,12 @@
         </fragment>
         <fragment
             android:id="@+id/jetpackCameraXFragment"
-            android:name="com.barkatme.demo.ui.main.jetpack.camerax.JetpackCameraXFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.jetpack.camerax.JetpackCameraXFragment"
             android:label="JetpackCameraXFragment"
             tools:layout="@layout/fragment_camera_x" />
         <fragment
             android:id="@+id/jetpackPagingFragment"
-            android:name="com.barkatme.demo.ui.main.jetpack.paging.JetpackPagingFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.jetpack.paging.JetpackPagingFragment"
             android:label="JetpackPagingFragment"
             tools:layout="@layout/fragment_jetpack_paging" />
     </navigation>
@@ -71,7 +71,7 @@
         app:startDestination="@id/room">
         <fragment
             android:id="@+id/room"
-            android:name="com.barkatme.demo.ui.main.room.menu.RoomMenuFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.room.menu.RoomMenuFragment"
             android:label="RoomMenuFragment"
             tools:layout="@layout/fragment_room_menu">
             <action
@@ -80,7 +80,7 @@
         </fragment>
         <fragment
             android:id="@+id/roomGiphyFragment"
-            android:name="com.barkatme.demo.ui.main.room.giphy.RoomGiphyFragment"
+            android:name="com.barkatme.demo.ui.main.pdm1.room.giphy.RoomGiphyFragment"
             android:label="RoomGiphyFragment"
             tools:layout="@layout/fragment_room_giphy" />
     </navigation>
@@ -91,7 +91,7 @@
 
         <fragment
             android:id="@+id/patterns"
-            android:name="com.barkatme.demo.ui.main.patterns.PatternsFragment"
+            android:name="com.barkatme.demo.ui.main.pdm2.patterns.PatternsFragment"
             android:label="PatternsFragment"
             tools:layout="@layout/fragment_patterns">
             <action
@@ -100,7 +100,7 @@
         </fragment>
         <fragment
             android:id="@+id/decorator"
-            android:name="com.barkatme.demo.ui.main.patterns.decorator.DecoratorFragment"
+            android:name="com.barkatme.demo.ui.main.pdm2.patterns.decorator.DecoratorFragment"
             android:label="DecoratorFragment"
             tools:layout="@layout/fragment_decorator">
         </fragment>
@@ -108,7 +108,7 @@
 
     <fragment
         android:id="@+id/chat"
-        android:name="com.barkatme.demo.ui.main.chat.ChatFragment"
+        android:name="com.barkatme.demo.ui.main.pdm2.chat.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat" />
 

@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_x"
-        tools:context=".ui.main.coroutines.menu.CoroutinesMenuFragment">
+        tools:context=".ui.main.pdm1.coroutines.menu.CoroutinesMenuFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.auth.AuthFragment">
+        tools:context=".ui.main.pdm2.auth.AuthFragment">
 
         <Button
             android:id="@+id/button_test_sign_in"
