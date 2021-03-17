@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentRoomGiphyBinding
 import com.barkatme.demo.ui.base.BaseFragment
+import com.barkatme.demo.ui.extensions.getQueryTextChangeStateFlow
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.launchIn

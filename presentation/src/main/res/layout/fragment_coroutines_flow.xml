@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.coroutines.flow.CoroutinesFlowViewModel" />
+            type="com.barkatme.demo.ui.main.pdm1.coroutines.flow.CoroutinesFlowViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

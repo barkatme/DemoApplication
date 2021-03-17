@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.chat.ChatViewModel" />
+            type="com.barkatme.demo.ui.main.pdm2.chat.ChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

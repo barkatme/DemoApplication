@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.room.giphy.RoomGiphyViewModel" />
+            type="com.barkatme.demo.ui.main.pdm1.room.giphy.RoomGiphyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.jetpack.camerax.JetpackCameraXViewModel" />
+            type="com.barkatme.demo.ui.main.pdm1.jetpack.camerax.JetpackCameraXViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

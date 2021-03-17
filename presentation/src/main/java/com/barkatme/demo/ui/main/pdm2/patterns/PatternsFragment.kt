@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentPatternsBinding
 import com.barkatme.demo.ui.base.BaseFragment
+import com.barkatme.demo.ui.extensions.doOnClick
 
 class PatternsFragment(private val layout: Int = R.layout.fragment_patterns) :
     BaseFragment(layout) {

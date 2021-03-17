@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentJetpackMenuBinding
 import com.barkatme.demo.ui.base.BaseFragment
+import com.barkatme.demo.ui.extensions.doOnClick
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class JetpackMenuFragment(private val layout: Int = R.layout.fragment_jetpack_menu) :

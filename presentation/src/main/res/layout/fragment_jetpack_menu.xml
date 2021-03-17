@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.jetpack.menu.JetpackMenuViewModel" />
+            type="com.barkatme.demo.ui.main.pdm1.jetpack.menu.JetpackMenuViewModel" />
     </data>
 
     <ScrollView

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel" />
+            type="com.barkatme.demo.ui.main.pdm1.coroutines.channel.CoroutinesChannelViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
