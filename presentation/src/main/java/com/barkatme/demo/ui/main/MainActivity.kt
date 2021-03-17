@@ -35,6 +35,7 @@ class MainActivity : BaseActivity() {
                 R.id.nav_room -> navController.navigate(R.id.roomGraph)
                 R.id.nav_jetpack -> navController.navigate(R.id.jetpackGraph)
                 R.id.nav_coroutines -> navController.navigate(R.id.coroutinesGraph)
+                R.id.nav_auth -> navController.navigate(R.id.auth)
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
