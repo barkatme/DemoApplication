@@ -17,7 +17,7 @@ val domainModule = module {
     single { MessagesFlowUseCase(get()) }
     single { NewMessageUseCase(get()) }
 
-    single { SignInUseCase(get(), get(), get()) }
+    single { SignInUseCase(get(), get()) }
     single { SignUpUseCase(get(), get()) }
     single { SignOutUseCase(get(), get()) }
     single { GetCurrentUserUseCase(get(), get()) }

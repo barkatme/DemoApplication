@@ -1,8 +1,7 @@
-package com.barkatme.demo.notifier
+package com.barkatme.demo.ui.main.patterns.decorator
 
 import android.content.Context
 import android.widget.Toast
-import com.barkatme.demo.domain.usecase.demo.notifier.Notifier
 
 class ToastNotifier(
     private val notifier: Notifier,

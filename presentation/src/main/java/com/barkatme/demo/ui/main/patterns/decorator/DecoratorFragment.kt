@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.barkatme.demo.R
 import com.barkatme.demo.databinding.FragmentDecoratorBinding
-import com.barkatme.demo.domain.usecase.demo.notifier.EmptyNotifier
-import com.barkatme.demo.notifier.AndroidNotifier
-import com.barkatme.demo.notifier.ToastNotifier
 import com.barkatme.demo.ui.base.BaseFragment
 
 class DecoratorFragment(private val layout: Int = R.layout.fragment_decorator) :

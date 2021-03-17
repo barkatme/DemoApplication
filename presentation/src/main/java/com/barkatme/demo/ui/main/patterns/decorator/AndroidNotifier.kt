@@ -1,4 +1,4 @@
-package com.barkatme.demo.notifier
+package com.barkatme.demo.ui.main.patterns.decorator
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,7 +9,6 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.barkatme.demo.R
-import com.barkatme.demo.domain.usecase.demo.notifier.Notifier
 import com.barkatme.demo.ui.main.MainActivity
 
 class AndroidNotifier(private val notifier: Notifier, private val context: Context) : Notifier {

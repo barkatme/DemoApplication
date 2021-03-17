@@ -1,4 +1,4 @@
-package com.barkatme.demo.domain.usecase.demo.notifier
+package com.barkatme.demo.ui.main.patterns.decorator
 
 
 class EmptyNotifier : Notifier {

@@ -3,10 +3,6 @@ package com.barkatme.demo
 import android.app.Application
 import com.barkatme.data.dataModule
 import com.barkatme.demo.domain.domainModule
-import com.barkatme.demo.domain.usecase.demo.notifier.EmptyNotifier
-import com.barkatme.demo.domain.usecase.demo.notifier.Notifier
-import com.barkatme.demo.notifier.AndroidNotifier
-import com.barkatme.demo.notifier.ToastNotifier
 import com.barkatme.demo.ui.main.auth.AuthViewModel
 import com.barkatme.demo.ui.main.chat.ChatViewModel
 import com.barkatme.demo.ui.main.coroutines.channel.CoroutinesChannelViewModel
@@ -45,10 +41,6 @@ val presentationModule = module {
     //room
     viewModel { RoomGiphyViewModel(get(), get()) }
     single { Channel<Long>() }
-
-    single<Notifier> {
-        AndroidNotifier(ToastNotifier(EmptyNotifier(), get()), get())
-    }
 }
 
 @ExperimentalCoroutinesApi
