@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_room"
+        android:title="@string/room" />
+    <item
+        android:id="@+id/nav_jetpack"
+        android:title="@string/jetpack" />
+    <item
+        android:id="@+id/nav_coroutines"
+        android:title="@string/coroutines" />
+    <item
+        android:id="@+id/nav_chat"
+        android:title="@string/chat" />
+</menu>
