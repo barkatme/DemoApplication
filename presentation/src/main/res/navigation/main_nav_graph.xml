@@ -102,8 +102,7 @@
             android:id="@+id/decorator"
             android:name="com.barkatme.demo.ui.main.pdm2.patterns.decorator.DecoratorFragment"
             android:label="DecoratorFragment"
-            tools:layout="@layout/fragment_decorator">
-        </fragment>
+            tools:layout="@layout/fragment_decorator" />
     </navigation>
 
     <fragment
@@ -111,5 +110,10 @@
         android:name="com.barkatme.demo.ui.main.pdm2.chat.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/motionFragment"
+        android:name="com.barkatme.demo.ui.main.pdm2.motionlayout.MotionFragment"
+        android:label="MotionFragment"
+        tools:layout="@layout/fragment_motion" />
 
 </navigation>

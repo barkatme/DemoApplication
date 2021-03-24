@@ -28,4 +28,5 @@
     <string name="notification">Notification</string>
     <string name="android_notification_toast">Android notification + Toast</string>
     <string name="toast_only">Toast only</string>
+    <string name="motion_layout">Motion Layout</string>
 </resources>

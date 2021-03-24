@@ -32,6 +32,7 @@ class MainActivity : BaseActivity() {
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_chat -> navController.navigate(R.id.chat)
+                R.id.nav_motionFragment -> navController.navigate(R.id.motionFragment)
                 R.id.nav_patterns -> navController.navigate(R.id.patternsGraph)
                 R.id.nav_room -> navController.navigate(R.id.roomGraph)
                 R.id.nav_jetpack -> navController.navigate(R.id.jetpackGraph)
