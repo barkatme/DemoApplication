@@ -14,7 +14,7 @@ class MotionFragment(val layout: Int = R.layout.fragment_motion) : BaseFragment(
 
     private var _binding: FragmentMotionBinding? = null
     private val binding get() = _binding!!
-    val viewModel: MotionViewModel by viewModel()
+    private val viewModel: MotionViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
