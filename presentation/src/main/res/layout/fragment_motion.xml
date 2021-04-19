@@ -11,18 +11,18 @@
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/motion_layout"
+        android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:motionDebug="SHOW_ALL"
-        app:layoutDescription="@xml/fragment_motion_scene"
-        tools:showPaths="true">
+        app:layoutDescription="@xml/scene_08">
 
         <View
-            android:id="@+id/animated_view"
+            android:id="@+id/button"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="230dp" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
